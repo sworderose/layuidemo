@@ -8,15 +8,17 @@
 	<title>表单页面</title>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<link href="../../component/pear/css/pear.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/layui-src/dist/css/layui.css">
+	<script src="https://cdn.jsdelivr.net/npm/layui-src/dist/layui.all.js"></script>
 </head>
 
 <body class="pear-container">
 	<div class="layui-row layui-col-space10">
 		<div class="layui-col-md12">
-			<div class="layui-collapse" style="margin-bottom: 10px;">
-				<div class="layui-colla-item" style="background-color: white">
-					<h2 class="layui-colla-title" style="background-color: white">业务开发模版</h2>
-					<div class="layui-colla-content layui-row layui-col-space10" style="padding: 10px;">
+			<div class="layui-card layui-form" style="margin-bottom: 10px;">
+				<div style="background-color: white">
+					<h2 class="layui-card-header" style="background-color: white">业务表单模版</h2>
+					<div class="layui-card-body layui-row layui-col-space10" style="padding: 10px;">
 						<div class="layui-form-item">
 							<label class="layui-form-label" style="width: 100px;">ID</label>
 							<div class="layui-input-inline" style="width: 600px;">
@@ -58,126 +60,57 @@
 									id="giveAwayProps">模态框</button>
 							</div>
 						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label" style="width: 100px;">下拉框</label>
+							<div class="layui-input-inline ">
+								<select name="city" lay-verify="">
+									<option value="">请选择一个城市</option>
+									<option value="010">北京</option>
+									<option value="021">上海</option>
+									<option value="0571">杭州</option>
+								</select>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
-			<div class="layui-card layui-form" lay-filter="component-form-element">
-				<div class="layui-card-header">下拉选择框</div>
-				<div class="layui-card-body layui-row layui-col-space10">
-					<div class="layui-col-md6">
-						<select name="city" lay-verify="">
-							<option value="">请选择一个城市</option>
-							<option value="010">北京</option>
-							<option value="021">上海</option>
-							<option value="0571">杭州</option>
-						</select>
-					</div>
-					<div class="layui-col-md6">
-						<select name="city" lay-verify="">
-							<option value="010">北京</option>
-							<option value="021" disabled>上海（禁用效果）</option>
-							<option value="0571" selected>杭州</option>
-						</select>
-					</div>
-					<div class="layui-col-md6">
-						<select name="quiz">
-							<option value="">请选择</option>
-							<optgroup label="城市记忆">
-								<option value="你工作的第一个城市">你工作的第一个城市？</option>
-							</optgroup>
-							<optgroup label="学生时代">
-								<option value="你的工号">你的工号？</option>
-								<option value="你最喜欢的老师">你最喜欢的老师？</option>
-							</optgroup>
-						</select>
-					</div>
-					<div class="layui-col-md6">
-						<select name="city" lay-verify="required" lay-search>
-							<option value="">带搜索的选择框</option>
-							<option value="1">layer</option>
-							<option value="2">form</option>
-							<option value="3">layim</option>
-							<option value="4">element</option>
-							<option value="5">laytpl</option>
-							<option value="6">upload</option>
-							<option value="7">laydate</option>
-							<option value="8">laypage</option>
-							<option value="9">flow</option>
-							<option value="10">util</option>
-							<option value="11">code</option>
-							<option value="12">tree</option>
-							<option value="13">layedit</option>
-							<option value="14">nav</option>
-							<option value="15">tab</option>
-							<option value="16">table</option>
-							<option value="17">select</option>
-							<option value="18">checkbox</option>
-							<option value="19">switch</option>
-							<option value="20">radio</option>
-						</select>
-					</div>
-					<div class="layui-col-md12">
-						<select name="city" lay-verify="">
-							<option value="">请选择一个城市</option>
-							<option value="010">北京</option>
-							<option value="021">上海</option>
-							<option value="0571">杭州</option>
-						</select>
-					</div>
-				</div>
-			</div>
-			<div class="layui-card layui-form" lay-filter="component-form-element">
-				<div class="layui-card-header">复选框</div>
-				<div class="layui-card-body layui-row layui-col-space10">
-					<div class="layui-col-md12">
-						<input type="checkbox" name="" title="写作" lay-skin="primary" checked>
-						<input type="checkbox" name="" title="发呆" lay-skin="primary">
-						<input type="checkbox" name="" title="禁用" lay-skin="primary" disabled>
-						<input type="checkbox" name="" lay-skin="primary">
-					</div>
-				</div>
-			</div>
-			<div class="layui-card">
-				<div class="layui-card-header">扩展样式</div>
-				<div class="layui-card-body layui-row layui-col-space10">
-					<div class="layui-col-md12">
-						<input type="text" name="title" hover placeholder="密码" autocomplete="off" class="layui-input">
-					</div>
-					<div class="layui-col-md12">
-						<input type="text" name="title" success placeholder="成功" autocomplete="off" class="layui-input">
-					</div>
-					<div class="layui-col-md12">
-						<input type="text" name="title" failure placeholder="失败" autocomplete="off" class="layui-input">
-					</div>
 
-				</div>
-			</div>
-			<div class="layui-card">
-				<div class="layui-card-header">文本域</div>
-				<div class="layui-card-body layui-row layui-col-space10">
-					<div class="layui-col-md12">
-						<textarea name="" placeholder="请输入" class="layui-textarea"></textarea>
+			<div class="layui-card layui-form" style="margin-bottom: 10px;">
+				<div style="background-color: white">
+					<div class="layui-card-header"
+						style="background-color: white; display: flex; justify-content: space-between; align-items: center;">
+						<h4 style="margin: 0;">业务表格模版</h4>
+						<div class="layui-btn-group">
+							<button class="layui-btn layui-btn-sm pear-btn-primary"
+								lay-event="recStatementWealthChangebank" id="recStatementWealthChangebank">
+								点击打开
+							</button>
+							<button class="layui-btn layui-btn-sm pear-btn-primary"
+								lay-event="recStatementWealthChangebankClose"
+								id="recStatementWealthChangebankClose">点击关闭
+							</button>
+						</div>
 					</div>
-				</div>
-			</div>
-			<div class="layui-card layui-form" lay-filter="component-form-element">
-				<div class="layui-card-header">开关</div>
-				<div class="layui-card-body layui-row layui-col-space10">
-					<div class="layui-col-md12">
-						<input type="checkbox" name="xxx" lay-skin="switch">&nbsp;&nbsp;
-						<input type="checkbox" name="yyy" lay-skin="switch" lay-text="ON|OFF" checked>&nbsp;&nbsp;
-						<input type="checkbox" name="zzz" lay-skin="switch" lay-text="开启|关闭">&nbsp;&nbsp;
-						<input type="checkbox" name="aaa" lay-skin="switch" disabled>&nbsp;&nbsp;
-					</div>
-				</div>
-			</div>
-			<div class="layui-card layui-form" lay-filter="component-form-element">
-				<div class="layui-card-header">单选框</div>
-				<div class="layui-card-body layui-row layui-col-space10">
-					<div class="layui-col-md12">
-						<input type="radio" name="sex" value="nan" title="男">
-						<input type="radio" name="sex" value="nv" title="女" checked>
-						<input type="radio" name="sex" value="" title="中性" disabled>
+					<div class="layui-card-body layui-row layui-col-space10 table_div panel-main recStatementWealthChangebank"
+						hidden>
+						<div style="padding: 10px;">
+							<div class="layui-input-inline  layui-form">
+								<input type="text" class="layui-input" id="startTimeChangebank" placeholder="起始时间">
+							</div>
+							<div class="layui-input-inline  layui-form">
+								<input type="text" class="layui-input" id="endTimeChangebank" placeholder="截止时间">
+							</div>
+							<div class="layui-input-inline  layui-form">
+								<input type="text" class="layui-input" id="useridChangebank" placeholder="用户ID">
+							</div>
+							<div class="layui-input-inline ">
+								<button class="layui-btn layui-btn-sm pear-btn-primary"
+									id="searchinfoChangebank">查询</button>
+								<!--<button class="layui-btn layui-btn-sm" id="exportChangebank">导出全部</button>-->
+							</div>
+						</div>
+						<table class="layui-table" id="recStatementWealthChangebankTable" lay-filter="showTable">
+						</table>
 					</div>
 				</div>
 			</div>
@@ -185,11 +118,17 @@
 	</div>
 	<script src="../../component/layui/layui.js"></script>
 	<script src="../../component/pear/pear.js"></script>
+	<script th:inline="javascript" type="text/javascript">
+		var ctx = '[[@{/}]]'.replaceAll("\"", "").replace('//', '/');
+		/*<![CDATA[*/
+		var canViewSensitiveInformation = /*[[${canViewSensitiveInformation}]]*/ false;
+		/*]]>*/
+	</script>
 	<script>
 		layui.use(['form', 'element', 'code'], function () {
 			var form = layui.form;
 			var element = layui.element;
-
+			var table = layui.table;
 			layui.code();
 
 			// 确保在DOM完全加载后执行
@@ -216,6 +155,129 @@
 						cancel: function () {
 						}
 					});
+					return false;
+				});
+
+				//存钱罐变化明细
+				$("#recStatementWealthChangebank").click(function () {
+					$(".recStatementWealthChangebank").show();
+					$("#useridChangebank").val($("#user").val());
+					tableIns1 = table.render({
+						elem: '#recStatementWealthChangebankTable'
+						, contentType: 'application/json'
+						, page: true //开启分页
+						, limits: [20, 30, 40, 50, 100]
+						, limit: 20
+						, url: ctx + 'recStatementWealth/listByPage' //数据接口
+						, method: 'POST'
+						, sort: true //重点1：这里的sort表示 table表在取得接口数据后，对页面渲染后的table数据进行排序。同时，这里的true 会影响页面sort 上下小箭头的 显示效果
+						, even: true //开启隔行背景
+						, size: 'sm' //小尺寸的表格
+						, parseData: function (res) { //将原始数据解析成 table 组件所规定的数据
+							return {
+								"code": 0,
+								"msg": "请求成功",
+								"count": 5,
+								"data": [
+									{
+										"recordid": "1",
+										"recordtime": "2024-09-01 12:34:56",
+										"userid": "user123",
+										"opcode": "OP001",
+										"changebank": "100",
+										"afterbank": "1200",
+										"comment": "初次充值"
+									},
+									{
+										"recordid": "2",
+										"recordtime": "2024-09-02 15:22:45",
+										"userid": "user124",
+										"opcode": "OP002",
+										"changebank": "-50",
+										"afterbank": "1150",
+										"comment": "退款"
+									},
+									{
+										"recordid": "3",
+										"recordtime": "2024-09-03 09:11:30",
+										"userid": "user125",
+										"opcode": "OP003",
+										"changebank": "200",
+										"afterbank": "1350",
+										"comment": "奖励发放"
+									},
+									{
+										"recordid": "4",
+										"recordtime": "2024-09-04 18:45:00",
+										"userid": "user126",
+										"opcode": "OP004",
+										"changebank": "-75",
+										"afterbank": "1275",
+										"comment": "购买道具"
+									},
+									{
+										"recordid": "5",
+										"recordtime": "2024-09-05 10:00:00",
+										"userid": "user127",
+										"opcode": "OP005",
+										"changebank": "150",
+										"afterbank": "1425",
+										"comment": "活动奖励"
+									}
+								]
+							};
+						}
+						, cols: [
+							[
+								<!--                    {type: 'checkbox', fixed: 'left'},-->
+								{ field: 'recordid', title: 'ID' },
+								{ field: 'recordtime', title: '时间', sort: true },
+								{ field: 'userid', title: '用户ID', sort: true },
+								{ field: 'opcode', title: 'opcode', sort: true },
+								{
+									field: 'changebank', title: '类型', sort: true, templet: function (item) {
+										if (Number.parseInt(item.changebank) < 0) {
+											return '<label style="color: green">扣除</label>'
+										} else {
+											return '<label style="color: red">增加</label>'
+										}
+									}
+								},
+								{
+									field: 'changebank', title: '变化量($)', sort: true, templet: function (item) {
+										return keepTwoDecimalFull((Number.parseInt(item.changebank) / 100));
+									}
+								},
+								{
+									field: 'changebank', title: '变化前($)', sort: true, templet: function (item) {
+										return keepTwoDecimalFull((Number.parseInt(item.afterbank) - Number.parseInt(item.changebank)) / 100);
+									}
+								},
+								{
+									field: 'afterbank', title: '变化后($)', sort: true, templet: function (item) {
+										return keepTwoDecimalFull((Number.parseInt(item.afterbank) / 100));
+									}
+								},
+								{
+									field: 'comment', title: '描述', sort: true
+								}
+							]
+						], where: {
+							userid: $("#user").val(),
+							type: 2,
+						}
+						, done: function (res, curr, count) {
+							$(".layui-table-cell").addClass('custom-layer-content');
+							$(".layui-table-cell").height("auto");
+							setLayuiTheaderHeight();//设置表头一样高
+							setLayuiTbodyHeight();//设置内容一样高
+						}
+					});
+					return false;
+				});
+
+				$("#recStatementWealthChangebankClose").click(function () {
+					$(".recStatementWealthChangebank").hide();
 					return false;
 				});
 			});
