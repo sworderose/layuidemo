@@ -438,7 +438,7 @@
 			"icon": "layui-icon layui-icon-face-smile",
 			"type": 1,
 			"openType": "_iframe",
-			"href": "view/echarts/column.html"
+			"href": "view/document/form-business.html"
 		}]
 	}
 ]
