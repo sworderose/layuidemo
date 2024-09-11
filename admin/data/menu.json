@@ -419,5 +419,26 @@
 			"openType": "_iframe",
 			"href": "component/code/index.html"
 		}]
+	}, {
+		"id": "business",
+		"title": "业务开发",
+		"icon": "layui-icon layui-icon-chart",
+		"type": 0,
+		"href": "",
+		"children": [{
+			"id": 114,
+			"title": "用户列表",
+			"icon": "layui-icon layui-icon-face-smile",
+			"type": 1,
+			"openType": "_iframe",
+			"href": "view/system/user-business.html"
+		}, {
+			"id": 514,
+			"title": "用户信息查询",
+			"icon": "layui-icon layui-icon-face-smile",
+			"type": 1,
+			"openType": "_iframe",
+			"href": "view/echarts/column.html"
+		}]
 	}
 ]
