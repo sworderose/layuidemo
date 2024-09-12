@@ -265,17 +265,12 @@
 						<h4 style="margin: 0;">业务表格模版</h4>
 						<div class="layui-btn-group">
 							<button class="layui-btn layui-btn-sm pear-btn-primary"
-								lay-event="recStatementWealthChangebank" id="recStatementWealthChangebank">
-								点击打开
-							</button>
-							<button class="layui-btn layui-btn-sm pear-btn-primary"
-								lay-event="recStatementWealthChangebankClose"
-								id="recStatementWealthChangebankClose">点击关闭
-							</button>
+        lay-event="recStatementWealthChangebank" id="recStatementWealthChangebank">
+    <i class="layui-icon layui-icon-right"></i> <!-- 使用折叠图标 -->
+</button>
 						</div>
 					</div>
-					<div class="layui-card-body layui-row table_div panel-main recStatementWealthChangebank"
-						hidden>
+					<div class="layui-card-body layui-row table_div panel-main recStatementWealthChangebank" hidden>
 						<div class="layui-form-item" style="margin-top: 20px;">
 							<div class="layui-form-item layui-inline">
 								<label class="layui-form-label">用户名</label>
@@ -351,136 +346,138 @@
 
 				//存钱罐变化明细
 				$("#recStatementWealthChangebank").click(function () {
-					$(".recStatementWealthChangebank").show();
-					$("#useridChangebank").val($("#user").val());
-					tableIns1 = table.render({
-						elem: '#recStatementWealthChangebankTable'
-						, contentType: 'application/json'
-						, page: true //开启分页
-						, limits: [20, 30, 40, 50, 100]
-						, limit: 20
-						, url: ctx + 'recStatementWealth/listByPage' //数据接口
-						, method: 'POST'
-						, sort: true //重点1：这里的sort表示 table表在取得接口数据后，对页面渲染后的table数据进行排序。同时，这里的true 会影响页面sort 上下小箭头的 显示效果
-						, even: true //开启隔行背景
-						, size: 'sm' //小尺寸的表格
-						, parseData: function (res) { //将原始数据解析成 table 组件所规定的数据
-							return {
-								"code": 0,
-								"msg": "请求成功",
-								"count": 5,
-								"data": [
+					var $icon = $(this).find("i"); // 获取按钮内的图标元素
+					if ($(".recStatementWealthChangebank").is(":visible")) {
+						$(".recStatementWealthChangebank").hide();
+						$icon.removeClass("layui-icon-down").addClass("layui-icon-right"); 
+					} else {
+						$(".recStatementWealthChangebank").show();
+						$("#useridChangebank").val($("#user").val());
+						$icon.removeClass("layui-icon-down").addClass("layui-icon-down"); 
+						tableIns1 = table.render({
+							elem: '#recStatementWealthChangebankTable'
+							, contentType: 'application/json'
+							, page: true //开启分页
+							, limits: [20, 30, 40, 50, 100]
+							, limit: 20
+							, url: ctx + 'recStatementWealth/listByPage' //数据接口
+							, method: 'POST'
+							, sort: true //重点1：这里的sort表示 table表在取得接口数据后，对页面渲染后的table数据进行排序。同时，这里的true 会影响页面sort 上下小箭头的 显示效果
+							, even: true //开启隔行背景
+							, size: 'sm' //小尺寸的表格
+							, parseData: function (res) { //将原始数据解析成 table 组件所规定的数据
+								return {
+									"code": 0,
+									"msg": "请求成功",
+									"count": 5,
+									"data": [
+										{
+											"recordid": "1",
+											"recordtime": "2024-09-01 12:34:56",
+											"userid": "user123",
+											"opcode": "OP001",
+											"changebank": "100",
+											"afterbank": "1200",
+											"comment": "初次充值"
+										},
+										{
+											"recordid": "2",
+											"recordtime": "2024-09-02 15:22:45",
+											"userid": "user124",
+											"opcode": "OP002",
+											"changebank": "-50",
+											"afterbank": "1150",
+											"comment": "退款"
+										},
+										{
+											"recordid": "3",
+											"recordtime": "2024-09-03 09:11:30",
+											"userid": "user125",
+											"opcode": "OP003",
+											"changebank": "200",
+											"afterbank": "1350",
+											"comment": "奖励发放"
+										},
+										{
+											"recordid": "4",
+											"recordtime": "2024-09-04 18:45:00",
+											"userid": "user126",
+											"opcode": "OP004",
+											"changebank": "-75",
+											"afterbank": "1275",
+											"comment": "购买道具"
+										},
+										{
+											"recordid": "5",
+											"recordtime": "2024-09-05 10:00:00",
+											"userid": "user127",
+											"opcode": "OP005",
+											"changebank": "150",
+											"afterbank": "1425",
+											"comment": "活动奖励"
+										}
+									]
+								};
+							}
+							, cols: [
+								[
+									<!--                    {type: 'checkbox', fixed: 'left'},-->
+									{ field: 'recordid', title: 'ID' },
+									{ field: 'recordtime', title: '时间', sort: true },
+									{ field: 'userid', title: '用户ID', sort: true },
+									{ field: 'opcode', title: 'opcode', sort: true },
 									{
-										"recordid": "1",
-										"recordtime": "2024-09-01 12:34:56",
-										"userid": "user123",
-										"opcode": "OP001",
-										"changebank": "100",
-										"afterbank": "1200",
-										"comment": "初次充值"
+										field: 'changebank', title: '类型', sort: true, templet: function (item) {
+											if (Number.parseInt(item.changebank) < 0) {
+												return '<label style="color: green">扣除</label>'
+											} else {
+												return '<label style="color: red">增加</label>'
+											}
+										}
 									},
 									{
-										"recordid": "2",
-										"recordtime": "2024-09-02 15:22:45",
-										"userid": "user124",
-										"opcode": "OP002",
-										"changebank": "-50",
-										"afterbank": "1150",
-										"comment": "退款"
+										field: 'changebank', title: '变化量($)', sort: true, templet: function (item) {
+											return keepTwoDecimalFull((Number.parseInt(item.changebank) / 100));
+										}
 									},
 									{
-										"recordid": "3",
-										"recordtime": "2024-09-03 09:11:30",
-										"userid": "user125",
-										"opcode": "OP003",
-										"changebank": "200",
-										"afterbank": "1350",
-										"comment": "奖励发放"
+										field: 'changebank', title: '变化前($)', sort: true, templet: function (item) {
+											return keepTwoDecimalFull((Number.parseInt(item.afterbank) - Number.parseInt(item.changebank)) / 100);
+										}
 									},
 									{
-										"recordid": "4",
-										"recordtime": "2024-09-04 18:45:00",
-										"userid": "user126",
-										"opcode": "OP004",
-										"changebank": "-75",
-										"afterbank": "1275",
-										"comment": "购买道具"
+										field: 'afterbank', title: '变化后($)', sort: true, templet: function (item) {
+											return keepTwoDecimalFull((Number.parseInt(item.afterbank) / 100));
+										}
 									},
 									{
-										"recordid": "5",
-										"recordtime": "2024-09-05 10:00:00",
-										"userid": "user127",
-										"opcode": "OP005",
-										"changebank": "150",
-										"afterbank": "1425",
-										"comment": "活动奖励"
+										field: 'comment', title: '描述', sort: true
 									}
 								]
-							};
-						}
-						, cols: [
-							[
-								<!--                    {type: 'checkbox', fixed: 'left'},-->
-								{ field: 'recordid', title: 'ID' },
-								{ field: 'recordtime', title: '时间', sort: true },
-								{ field: 'userid', title: '用户ID', sort: true },
-								{ field: 'opcode', title: 'opcode', sort: true },
-								{
-									field: 'changebank', title: '类型', sort: true, templet: function (item) {
-										if (Number.parseInt(item.changebank) < 0) {
-											return '<label style="color: green">扣除</label>'
-										} else {
-											return '<label style="color: red">增加</label>'
-										}
-									}
-								},
-								{
-									field: 'changebank', title: '变化量($)', sort: true, templet: function (item) {
-										return keepTwoDecimalFull((Number.parseInt(item.changebank) / 100));
-									}
-								},
-								{
-									field: 'changebank', title: '变化前($)', sort: true, templet: function (item) {
-										return keepTwoDecimalFull((Number.parseInt(item.afterbank) - Number.parseInt(item.changebank)) / 100);
-									}
-								},
-								{
-									field: 'afterbank', title: '变化后($)', sort: true, templet: function (item) {
-										return keepTwoDecimalFull((Number.parseInt(item.afterbank) / 100));
-									}
-								},
-								{
-									field: 'comment', title: '描述', sort: true
-								}
-							]
-						], where: {
-							userid: $("#user").val(),
-							type: 2,
-						}
-						, done: function (res, curr, count) {
-							$(".layui-table-cell").addClass('custom-layer-content');
-							$(".layui-table-cell").height("auto");
-							setLayuiTheaderHeight();//设置表头一样高
-							setLayuiTbodyHeight();//设置内容一样高
-						}
-					});
-					return false;
-				});
-
-				$("#recStatementWealthChangebankClose").click(function () {
-					$(".recStatementWealthChangebank").hide();
+							], where: {
+								userid: $("#user").val(),
+								type: 2,
+							}
+							, done: function (res, curr, count) {
+								$(".layui-table-cell").addClass('custom-layer-content');
+								$(".layui-table-cell").height("auto");
+								setLayuiTheaderHeight();//设置表头一样高
+								setLayuiTbodyHeight();//设置内容一样高
+							}
+						});
+					}
 					return false;
 				});
 
 				document.getElementById("advancedSearchBtn").addEventListener("click", function () {
-				layer.open({
-					type: 2,
-					title: '高级查询',
-					shade: 0.1,
-					area: ['500px', '500px'],
-					content: MODULE_PATH + 'advancedSearch.html'
+					layer.open({
+						type: 2,
+						title: '高级查询',
+						shade: 0.1,
+						area: ['500px', '500px'],
+						content: MODULE_PATH + 'advancedSearch.html'
+					});
 				});
-			});
 			});
 		});
 	</script>
