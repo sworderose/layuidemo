@@ -138,7 +138,7 @@
 						</select>
 					</div>
 				</div>
-			</div>	
+			</div>
 			<div class="layui-card layui-form" lay-filter="component-form-element">
 				<div class="layui-card-header">复选框</div>
 				<div class="layui-card-body layui-row layui-col-space10">
@@ -164,7 +164,7 @@
 					<div class="layui-col-md12">
 						<input type="text" name="title" failure placeholder="失败" autocomplete="off" class="layui-input">
 					</div>
-			
+
 				</div>
 			</div>
 			<div class="layui-card">
@@ -274,22 +274,29 @@
 							</button>
 						</div>
 					</div>
-					<div class="layui-card-body layui-row layui-col-space10 table_div panel-main recStatementWealthChangebank"
+					<div class="layui-card-body layui-row table_div panel-main recStatementWealthChangebank"
 						hidden>
-						<div style="padding: 10px;">
-							<div class="layui-input-inline  layui-form">
-								<input type="text" class="layui-input" id="startTimeChangebank" placeholder="起始时间">
+						<div class="layui-form-item" style="margin-top: 20px;">
+							<div class="layui-form-item layui-inline">
+								<label class="layui-form-label">用户名</label>
+								<div class="layui-input-inline">
+									<input type="text" name="realName" placeholder="" class="layui-input">
+								</div>
 							</div>
-							<div class="layui-input-inline  layui-form">
-								<input type="text" class="layui-input" id="endTimeChangebank" placeholder="截止时间">
-							</div>
-							<div class="layui-input-inline  layui-form">
-								<input type="text" class="layui-input" id="useridChangebank" placeholder="用户ID">
-							</div>
-							<div class="layui-input-inline ">
-								<button class="layui-btn layui-btn-sm pear-btn-primary"
-									id="searchinfoChangebank">查询</button>
-								<!--<button class="layui-btn layui-btn-sm" id="exportChangebank">导出全部</button>-->
+							<div class="layui-form-item layui-inline">
+								<button class="pear-btn pear-btn-md pear-btn-primary" lay-submit
+									lay-filter="user-query">
+									<i class="layui-icon layui-icon-search"></i>
+									查询
+								</button>
+								<button type="reset" class="pear-btn pear-btn-md">
+									<i class="layui-icon layui-icon-refresh"></i>
+									重置
+								</button>
+								<button type="reset" class="pear-btn pear-btn-md" id="advancedSearchBtn">
+									<i class="layui-icon layui-icon-note"></i>
+									高级搜索
+								</button>
 							</div>
 						</div>
 						<table class="layui-table" id="recStatementWealthChangebankTable" lay-filter="showTable">
@@ -312,8 +319,9 @@
 			var form = layui.form;
 			var element = layui.element;
 			var table = layui.table;
+			let common = layui.common;
 			layui.code();
-
+			let MODULE_PATH = "operate/";
 			// 确保在DOM完全加载后执行
 			$(document).ready(function () {
 
@@ -463,6 +471,16 @@
 					$(".recStatementWealthChangebank").hide();
 					return false;
 				});
+
+				document.getElementById("advancedSearchBtn").addEventListener("click", function () {
+				layer.open({
+					type: 2,
+					title: '高级查询',
+					shade: 0.1,
+					area: ['500px', '500px'],
+					content: MODULE_PATH + 'advancedSearch.html'
+				});
+			});
 			});
 		});
 	</script>
