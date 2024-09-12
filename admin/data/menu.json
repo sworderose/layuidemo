@@ -426,19 +426,36 @@
 		"type": 0,
 		"href": "",
 		"children": [{
-			"id": 114,
+			"id": 11401,
 			"title": "用户列表",
 			"icon": "layui-icon layui-icon-face-smile",
 			"type": 1,
 			"openType": "_iframe",
-			"href": "view/system/user-business.html"
+			"href": "view/business/user-business.html"
 		}, {
-			"id": 514,
+			"id": 11402,
 			"title": "用户信息查询",
 			"icon": "layui-icon layui-icon-face-smile",
 			"type": 1,
 			"openType": "_iframe",
-			"href": "view/document/form-business.html"
+			"href": "view/business/form-business.html"
+		},
+		{
+			"id": 11403,
+			"title": "角色管理",
+			"icon": "layui-icon layui-icon-face-cry",
+			"type": 1,
+			"openType": "_iframe",
+			"href": "view/business/role-business.html"
+		},
+
+		{
+			"id": 11404,
+			"title": "权限管理",
+			"icon": "layui-icon layui-icon-face-cry",
+			"type": 1,
+			"openType": "_iframe",
+			"href": "view/business/power-business.html"
 		}]
 	}
 ]
