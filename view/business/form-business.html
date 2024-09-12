@@ -331,10 +331,10 @@
 					layer.open({
 						type: 1,
 						skin: 'layui-layer-demo', //样式类名
-						title: "赠送道具",
+						title: "模态框样式",
 						shadeClose: true, //开启遮罩关闭
-						area: ['700px', '500px'], //宽高
 						shade: 0.6, //遮罩透明度
+						area: 'auto',
 						maxmin: true, //允许全屏最小化
 						anim: 1, //0-6的动画形式，-1不开启
 						content: $('#giveAwayPropsPage'), //捕获的元素，注意：最好该指定的元素要存放在body最外层，否则可能被其它的相对元素所影响
@@ -483,49 +483,63 @@
 	</script>
 </body>
 
-<!-- 原有的模态框ui -->
-<div class="panel panel-default operation2" id="giveAwayPropsPage" hidden>
-	<div class="panel-heading title"></div>
+<!-- 模态框ui -->
+<div class="layui-card operation2" id="giveAwayPropsPage" hidden> <!-- 使用 layui-card -->
 	<div class="layui-card-body">
-		<form class="layui-form " action="" lay-filter="info">
+		<div class="layui-row layui-col-space10" style="padding: 10px;">
+			<!-- ID 表单项 -->
 			<div class="layui-form-item">
-				<label class="layui-form-label">userId:</label>
+				<label class="layui-form-label" style="width: 100px;">ID</label>
 				<div class="layui-input-inline">
-					<input id="giveAwayProps_userid" name="userid" readonly autocomplete="off" class="layui-input">
+					<input type="text" name="keyword" placeholder="" class="layui-input">
 				</div>
+				<button class="pear-btn pear-btn-md pear-btn-primary" lay-submit lay-filter="power-query">
+					<i class="layui-icon layui-icon-search"></i> 封号
+				</button>
+				<button type="reset" class="pear-btn pear-btn-md">
+					<i class="layui-icon layui-icon-refresh"></i> 解封
+				</button>
 			</div>
-			<blockquote class="layui-elem-quote">
-				<span style="color: red" data-i18n-text="道具数量仅支持单个赠送">道具数量仅支持单个赠送</span>
-			</blockquote>
+			<!-- 充值状态 表单项 -->
 			<div class="layui-form-item">
-				<label class="layui-form-label">道具:</label>
+				<label class="layui-form-label" style="width: 100px;">充值状态</label>
 				<div class="layui-input-inline">
-					<select id="giveAwayProps_goodsid" name="goodsid" lay-filter="goodsid" lay-search="">
-						<option value="">请选择道具</option>
-						<option th:each="s:${goods}" th:value="${s.id}" th:text="${s.id+'-'+s.name+'-'+s.desc}"
-							th:selected="${s.id+''} eq ${param.goodsid+''}"></option>
-					</select>
+					<input type="text" name="keyword" placeholder="" class="layui-input">
 				</div>
-				<!--<div class="layui-input-inline">
-						<input name="num" id="num" placeholder="请输入数量" th:value="1" readonly autocomplete="off"
-							   class="layui-input" type="hidden">
-					</div>-->
-
-				<div class="layui-form-item">
-					<label class="layui-form-label">备注:</label>
-					<div class="layui-input-inline">
-						<input id="giveAwayProps_remark" name="remark" autocomplete="off" placeholder="请输入备注"
-							class="layui-input">
-					</div>
-				</div>
-
+				<button class="pear-btn pear-btn-md pear-btn-primary" lay-submit lay-filter="power-query">
+					<i class="layui-icon layui-icon-search"></i> 限制
+				</button>
+				<button type="reset" class="pear-btn pear-btn-md">
+					<i class="layui-icon layui-icon-refresh"></i> 解除
+				</button>
 			</div>
+			<!-- 锁定到期时间 表单项 -->
 			<div class="layui-form-item">
-				<div class="layui-input-block">
-					<button type="submit" class="layui-btn" lay-submit="" lay-filter="submit2">保存</button>
+				<label class="layui-form-label" style="width: 100px;">锁定到期时间</label>
+				<div class="layui-input-inline">
+					<input type="text" name="keyword" placeholder="" class="layui-input">
 				</div>
 			</div>
-		</form>
+			<!-- 赠送道具 表单项 -->
+			<div class="layui-form-item">
+				<label class="layui-form-label" style="width: 100px;">赠送道具</label>
+				<div class="layui-input-inline">
+					<button class="pear-btn pear-btn-md pear-btn-primary" lay-event="giveAwayProps" id="giveAwayProps">按钮</button>
+				</div>
+			</div>
+		</div>
+	
+		<!-- 保存和提交按钮 -->
+		<div class="layui-row layui-col-space10" style="padding: 10px;">
+			<div class="layui-col-md12" style="text-align: right;">
+				<button type="button" class="pear-btn pear-btn-primary pear-btn-sm" lay-submit lay-filter="user-save">
+					<i class="layui-icon layui-icon-ok"></i> 提交
+				</button>
+				<button type="button" class="pear-btn pear-btn-sm" lay-submit lay-filter="user-save">
+					<i class="layui-icon layui-icon-refresh"></i> 重制
+				</button>
+			</div>
+		</div>
 	</div>
 </div>
 
