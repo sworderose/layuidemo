@@ -196,6 +196,16 @@
 					</div>
 				</div>
 			</div>
+			<div class="layui-card">
+				<div class="layui-card-header">消息提醒</div>
+				<div class="layui-card-body">
+					<button class="toast-info pear-btn pear-btn-primary">通用消息</button>
+					<button class="toast-success pear-btn pear-btn-success">成功消息</button>
+					<button class="toast-failure pear-btn pear-btn-danger">错误消息</button>
+					<button class="toast-warning pear-btn pear-btn-warming">警告消息</button>
+					<button class="toast-question pear-btn">问题消息</button>
+				</div>
+			</div>
 		</div>
 		<div class="layui-col-md12">
 			<div class="layui-card layui-form" style="margin-bottom: 10px;">
@@ -320,7 +330,7 @@
 			// 确保在DOM完全加载后执行
 			$(document).ready(function () {
 
-				// 原有的js逻辑
+				// 模态框
 				$("#giveAwayProps").click(function () {
 					/*$("#update_nickname").val($("#nickname").val());*/
 					$("#giveAwayProps_userid").val($("#user").val());
@@ -344,7 +354,7 @@
 					return false;
 				});
 
-				//存钱罐变化明细
+				//通用业务表格
 				$("#recStatementWealthChangebank").click(function () {
 					var $icon = $(this).find("i"); // 获取按钮内的图标元素
 					if ($(".recStatementWealthChangebank").is(":visible")) {
@@ -477,6 +487,51 @@
 						area: ['500px', '500px'],
 						content: MODULE_PATH + 'advancedSearch.html'
 					});
+				});
+			});
+		});
+
+		//toast提示
+		layui.use(['toast', 'jquery'], function () {
+			var toast = layui.toast;
+			var $ = layui.jquery;
+			$('.toast-info').on('click', function () {
+				toast.info({
+					title: '信息',
+					message: '这是一个通用消息通知',
+					position: 'topRight'
+				});
+			});
+
+			$('.toast-success').on('click', function () {
+				toast.success({
+					title: '成功',
+					message: '操作成功的消息通知',
+					position: 'topRight'
+				});
+			});
+
+			$('.toast-failure').on('click', function () {
+				toast.error({
+					title: '错误',
+					message: '发生错误的消息通知',
+					position: 'topRight'
+				});
+			});
+
+			$('.toast-warning').on('click', function () {
+				toast.warning({
+					title: '警告',
+					message: '这是一个警告消息通知',
+					position: 'topRight'
+				});
+			});
+
+			$('.toast-question').on('click', function () {
+				toast.question({
+					title: '问题',
+					message: '这是一个问题消息通知',
+					position: 'topRight'
 				});
 			});
 		});
