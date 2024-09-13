@@ -39,19 +39,19 @@
 							</select>
 						</div>
 					</div>
-					<div class="layui-inline layui-form">
-						<div class="layui-inline" id="ID-laydate-rangeLinked">
-							<div class="layui-input-inline">
-								<input type="text" autocomplete="off" id="ID-laydate-start-date-1" class="layui-input"
-									placeholder="开始日期">
-							</div>
-							<div class="layui-form-mid">-</div>
-							<div class="layui-input-inline">
-								<input type="text" autocomplete="off" id="ID-laydate-end-date-1" class="layui-input"
-									placeholder="结束日期">
-							</div>
+
+					<div class="layui-inline layui-form" id="ID-laydate-rangeLinked">
+						<div class="layui-input-inline">
+							<input type="text" autocomplete="off" id="ID-laydate-start-date-1" class="layui-input"
+								placeholder="开始日期">
+						</div>
+						<div class="layui-form-mid">-</div>
+						<div class="layui-input-inline">
+							<input type="text" autocomplete="off" id="ID-laydate-end-date-1" class="layui-input"
+								placeholder="结束日期">
 						</div>
 					</div>
+
 					<div class="layui-inline">
 						<div class="layui-inline layui-form">
 							<div class="layui-input-inline">
@@ -96,10 +96,6 @@
 						<button type="reset" class="pear-btn pear-btn-md">
 							<i class="layui-icon layui-icon-refresh"></i>
 							全部导出
-						</button>
-						<button type="reset" class="pear-btn pear-btn-md" id="advancedSearchBtn">
-							<i class="layui-icon layui-icon-note"></i>
-							高级搜索
 						</button>
 					</div>
 				</div>
@@ -287,17 +283,7 @@
 					content: MODULE_PATH + 'info.html'
 				});
 			}
-
-			document.getElementById("advancedSearchBtn").addEventListener("click", function () {
-				layer.open({
-					type: 2,
-					title: '高级查询',
-					shade: 0.1,
-					area: [common.isModile() ? '100%' : '500px', common.isModile() ? '100%' : '400px'],
-					content: MODULE_PATH + 'advancedSearch.html'
-				});
-			});
-
+			
 			window.edit = function (obj) {
 				layer.open({
 					type: 2,

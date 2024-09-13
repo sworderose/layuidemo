@@ -298,10 +298,6 @@
 									<i class="layui-icon layui-icon-refresh"></i>
 									重置
 								</button>
-								<button type="reset" class="pear-btn pear-btn-md" id="advancedSearchBtn">
-									<i class="layui-icon layui-icon-note"></i>
-									高级搜索
-								</button>
 							</div>
 						</div>
 						<table class="layui-table" id="recStatementWealthChangebankTable" lay-filter="showTable">
@@ -477,16 +473,6 @@
 						});
 					}
 					return false;
-				});
-
-				document.getElementById("advancedSearchBtn").addEventListener("click", function () {
-					layer.open({
-						type: 2,
-						title: '高级查询',
-						shade: 0.1,
-						area: ['500px', '500px'],
-						content: MODULE_PATH + 'advancedSearch.html'
-					});
 				});
 			});
 		});
