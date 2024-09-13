@@ -569,6 +569,33 @@
 						id="giveAwayProps">按钮</button>
 				</div>
 			</div>
+			<!-- 下拉框 表单项 -->
+			<div class="layui-form-item">
+				<label class="layui-form-label" style="width: 100px;">下拉框</label>
+				<div class="layui-form layui-card-body">
+					<div style="margin-top: -25px;">
+						<div class="layui-input-inline ">
+							<select name="city" lay-verify="">
+								<option value="">请选择一个城市</option>
+								<option value="010">北京</option>
+								<option value="021">上海</option>
+								<option value="0571">杭州</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+            <!-- 单选框 表单项 -->
+			<div class="layui-form-item">
+				<label class="layui-form-label" style="width: 100px;">性别</label>
+				<div class="layui-form layui-card-body">
+					<div style="margin-top: -25px;">
+						<input type="radio" name="sex" value="nan" title="男">
+						<input type="radio" name="sex" value="nv" title="女" checked>
+						<input type="radio" name="sex" value="" title="中性" disabled>
+					</div>
+				</div>
+			</div>
 		</div>
 
 		<!-- 保存和提交按钮 -->
