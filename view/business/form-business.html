@@ -265,9 +265,9 @@
 						<h4 style="margin: 0;">业务表格模版</h4>
 						<div class="layui-btn-group">
 							<button class="layui-btn layui-btn-sm pear-btn-primary"
-        lay-event="recStatementWealthChangebank" id="recStatementWealthChangebank">
-    <i class="layui-icon layui-icon-right"></i> <!-- 使用折叠图标 -->
-</button>
+								lay-event="recStatementWealthChangebank" id="recStatementWealthChangebank">
+								<i class="layui-icon layui-icon-right"></i> <!-- 使用折叠图标 -->
+							</button>
 						</div>
 					</div>
 					<div class="layui-card-body layui-row table_div panel-main recStatementWealthChangebank" hidden>
@@ -349,11 +349,11 @@
 					var $icon = $(this).find("i"); // 获取按钮内的图标元素
 					if ($(".recStatementWealthChangebank").is(":visible")) {
 						$(".recStatementWealthChangebank").hide();
-						$icon.removeClass("layui-icon-down").addClass("layui-icon-right"); 
+						$icon.removeClass("layui-icon-down").addClass("layui-icon-right");
 					} else {
 						$(".recStatementWealthChangebank").show();
 						$("#useridChangebank").val($("#user").val());
-						$icon.removeClass("layui-icon-down").addClass("layui-icon-down"); 
+						$icon.removeClass("layui-icon-down").addClass("layui-icon-down");
 						tableIns1 = table.render({
 							elem: '#recStatementWealthChangebankTable'
 							, contentType: 'application/json'
@@ -524,11 +524,12 @@
 			<div class="layui-form-item">
 				<label class="layui-form-label" style="width: 100px;">赠送道具</label>
 				<div class="layui-input-inline">
-					<button class="pear-btn pear-btn-md pear-btn-primary" lay-event="giveAwayProps" id="giveAwayProps">按钮</button>
+					<button class="pear-btn pear-btn-md pear-btn-primary" lay-event="giveAwayProps"
+						id="giveAwayProps">按钮</button>
 				</div>
 			</div>
 		</div>
-	
+
 		<!-- 保存和提交按钮 -->
 		<div class="layui-row layui-col-space10" style="padding: 10px;">
 			<div class="layui-col-md12" style="text-align: right;">
