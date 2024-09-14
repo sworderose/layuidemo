@@ -54,10 +54,10 @@
 							</div>
 						</div>
 						<div class="layui-form-item">
-							<label class="layui-form-label" style="width: 100px;">赠送道具</label>
+							<label class="layui-form-label" style="width: 100px;">弹出模态框</label>
 							<div class="layui-input-inline ">
-								<button class="pear-btn pear-btn-md pear-btn-primary" lay-event="giveAwayProps"
-									id="giveAwayProps">模态框</button>
+								<button class="pear-btn pear-btn-md pear-btn-primary" lay-event="openWindow"
+									id="openWindow">模态框</button>
 							</div>
 						</div>
 						<div class="layui-form-item">
@@ -327,10 +327,11 @@
 			$(document).ready(function () {
 
 				// 模态框
-				$("#giveAwayProps").click(function () {
+				$("#openWindow").click(function () {
+					console.log("111")
 					/*$("#update_nickname").val($("#nickname").val());*/
-					$("#giveAwayProps_userid").val($("#user").val());
-					$("#giveAwayProps_goodsid").val("");
+					$("#openWindow_userid").val($("#user").val());
+					$("#openWindow_goodsid").val("");
 					$("#num").val("");
 					$("#remark").val("");
 					form.render()
@@ -343,7 +344,7 @@
 						area: 'auto',
 						maxmin: true, //允许全屏最小化
 						anim: 1, //0-6的动画形式，-1不开启
-						content: $('#giveAwayPropsPage'), //捕获的元素，注意：最好该指定的元素要存放在body最外层，否则可能被其它的相对元素所影响
+						content: $('#openWindowPage'), //捕获的元素，注意：最好该指定的元素要存放在body最外层，否则可能被其它的相对元素所影响
 						cancel: function () {
 						}
 					});
@@ -525,7 +526,7 @@
 </body>
 
 <!-- 模态框ui -->
-<div class="layui-card operation2" id="giveAwayPropsPage" hidden> <!-- 使用 layui-card -->
+<div class="layui-card operation2" id="openWindowPage" hidden> <!-- 使用 layui-card -->
 	<div class="layui-card-body">
 		<div class="layui-row layui-col-space10" style="padding: 10px;">
 			<!-- ID 表单项 -->

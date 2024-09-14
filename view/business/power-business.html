@@ -43,7 +43,7 @@
 </div>
 
 <script type="text/html" id="power-toolbar">
-    <button class="pear-btn pear-btn-primary pear-btn-md" lay-event="add">
+    <button class="pear-btn pear-btn-primary pear-btn-md" lay-event="openWindow">
         <i class="layui-icon layui-icon-add-1"></i>
         新增
     </button>
@@ -62,7 +62,7 @@
 </script>
 
 <script type="text/html" id="power-bar">
-    <button class="pear-btn pear-btn-primary pear-btn-sm" lay-event="edit"><i class="layui-icon layui-icon-edit"></i></button>
+    <button class="pear-btn pear-btn-primary pear-btn-sm" lay-event="openWindow"><i class="layui-icon layui-icon-edit"></i></button>
     <button class="pear-btn pear-btn-danger pear-btn-sm" lay-event="remove"><i class="layui-icon layui-icon-delete"></i></button>
 </script>
 
@@ -128,6 +128,8 @@
                 window.remove(obj);
             } else if (obj.event === 'edit') {
                 window.edit(obj);
+            } else if (obj.event === 'openWindow') {
+                window.openWindow();
             }
         })
 
@@ -143,7 +145,9 @@
 				 treetable.expandAll("#power-table");
 			} else if(obj.event === 'foldAll'){
 				 treetable.foldAll("#power-table");
-			}
+			} else if (obj.event === 'openWindow') {
+                window.openWindow();
+            }
         });
 
         window.add = function(){
@@ -230,7 +234,117 @@
 				})
 			});
 		}
+
+        // 模态框
+        window.openWindow = function () {
+            console.log("111")
+            $("#openWindow_userid").val($("#user").val());
+            $("#openWindow_goodsid").val("");
+            $("#num").val("");
+            $("#remark").val("");
+            form.render()
+            layer.open({
+                type: 1,
+                skin: 'layui-layer-demo', //样式类名
+                title: "模态框样式",
+                shadeClose: true, //开启遮罩关闭
+                shade: 0.6, //遮罩透明度
+                area: 'auto',
+                maxmin: true, //允许全屏最小化
+                anim: 1, //0-6的动画形式，-1不开启
+                content: $('#openWindowPage'), //捕获的元素，注意：最好该指定的元素要存放在body最外层，否则可能被其它的相对元素所影响
+                cancel: function () {
+                }
+            });
+        }
     })
 </script>
 </body>
+<!-- 模态框ui -->
+<div class="layui-card operation2" id="openWindowPage" hidden> <!-- 使用 layui-card -->
+	<div class="layui-card-body">
+		<div class="layui-row layui-col-space10" style="padding: 10px;">
+			<!-- ID 表单项 -->
+			<div class="layui-form-item">
+				<label class="layui-form-label" style="width: 100px;">ID</label>
+				<div class="layui-input-inline">
+					<input type="text" name="keyword" placeholder="" class="layui-input">
+				</div>
+				<button class="pear-btn pear-btn-md pear-btn-primary" lay-submit lay-filter="power-query">
+					<i class="layui-icon layui-icon-search"></i> 封号
+				</button>
+				<button type="reset" class="pear-btn pear-btn-md">
+					<i class="layui-icon layui-icon-refresh"></i> 解封
+				</button>
+			</div>
+			<!-- 充值状态 表单项 -->
+			<div class="layui-form-item">
+				<label class="layui-form-label" style="width: 100px;">充值状态</label>
+				<div class="layui-input-inline">
+					<input type="text" name="keyword" placeholder="" class="layui-input">
+				</div>
+				<button class="pear-btn pear-btn-md pear-btn-primary" lay-submit lay-filter="power-query">
+					<i class="layui-icon layui-icon-search"></i> 限制
+				</button>
+				<button type="reset" class="pear-btn pear-btn-md">
+					<i class="layui-icon layui-icon-refresh"></i> 解除
+				</button>
+			</div>
+			<!-- 锁定到期时间 表单项 -->
+			<div class="layui-form-item">
+				<label class="layui-form-label" style="width: 100px;">锁定到期时间</label>
+				<div class="layui-input-inline">
+					<input type="text" name="keyword" placeholder="" class="layui-input">
+				</div>
+			</div>
+			<!-- 赠送道具 表单项 -->
+			<div class="layui-form-item">
+				<label class="layui-form-label" style="width: 100px;">赠送道具</label>
+				<div class="layui-input-inline">
+					<button class="pear-btn pear-btn-md pear-btn-primary" lay-event="giveAwayProps"
+						id="giveAwayProps">按钮</button>
+				</div>
+			</div>
+			<!-- 下拉框 表单项 -->
+			<div class="layui-form-item">
+				<label class="layui-form-label" style="width: 100px;">下拉框</label>
+				<div class="layui-form layui-card-body">
+					<div style="margin-top: -25px;">
+						<div class="layui-input-inline ">
+							<select name="city" lay-verify="">
+								<option value="">请选择一个城市</option>
+								<option value="010">北京</option>
+								<option value="021">上海</option>
+								<option value="0571">杭州</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+            <!-- 单选框 表单项 -->
+			<div class="layui-form-item">
+				<label class="layui-form-label" style="width: 100px;">性别</label>
+				<div class="layui-form layui-card-body">
+					<div style="margin-top: -25px;">
+						<input type="radio" name="sex" value="nan" title="男">
+						<input type="radio" name="sex" value="nv" title="女" checked>
+						<input type="radio" name="sex" value="" title="中性" disabled>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- 保存和提交按钮 -->
+		<div class="layui-row layui-col-space10" style="padding: 10px;">
+			<div class="layui-col-md12" style="text-align: right;">
+				<button type="button" class="pear-btn pear-btn-primary pear-btn-sm" lay-submit lay-filter="user-save">
+					<i class="layui-icon layui-icon-ok"></i> 提交
+				</button>
+				<button type="button" class="pear-btn pear-btn-sm" lay-submit lay-filter="user-save">
+					<i class="layui-icon layui-icon-refresh"></i> 重制
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
 </html>
