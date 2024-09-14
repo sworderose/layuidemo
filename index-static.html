@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Layui 动态加载页面示例</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/layui@2.7.6/dist/layui.js"></script>
+    <!-- 依 赖 样 式 -->
+    <link rel="stylesheet" href="component/pear/css/pear.css" />
+    <!-- 加 载 样 式 -->
+    <link rel="stylesheet" href="admin/css/loader.css" />
+    <!-- 布 局 样 式 -->
+    <link rel="stylesheet" href="admin/css/admin.css">
+</head>
+
+<body class="layui-layout-body pear-admin">
+    <div class="layui-layout layui-layout-admin">
+        <!-- 顶 部 样 式 -->
+        <div class="layui-header">
+            <div class="layui-logo">Pear Admin</div>
+            <!-- 顶 部 左 侧 功 能 -->
+            <ul class="layui-nav layui-layout-left">
+                <li class="collapse layui-nav-item"><a href="#" class="layui-icon layui-icon-shrink-right"></a></li>
+                <li class="refresh layui-nav-item"><a href="#" class="layui-icon layui-icon-refresh-1" loading=600></a>
+                </li>
+            </ul>
+            <!-- 多 系 统 菜 单 -->
+            <div id="control" class="layui-layout-control"></div>
+            <!-- 顶 部 右 侧 菜 单 -->
+            <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item layui-hide-xs"><a href="#"
+                        class="menuSearch layui-icon layui-icon-search"></a></li>
+                <li class="layui-nav-item layui-hide-xs"><a href="#"
+                        class="fullScreen layui-icon layui-icon-screen-full"></a></li>
+                <li class="layui-nav-item layui-hide-xs"><a href="http://www.pearadmin.com"
+                        class="layui-icon layui-icon-website"></a></li>
+                <li class="layui-nav-item layui-hide-xs message"></li>
+                <li class="layui-nav-item user">
+                    <!-- 头 像 -->
+                    <a class="layui-icon layui-icon-username" href="javascript:;"></a>
+                    <!-- 功 能 菜 单 -->
+                    <dl class="layui-nav-child">
+                        <dd><a user-menu-url="view/system/person.html" user-menu-id="5555"
+                                user-menu-title="基本资料">基本资料</a></dd>
+                        <dd><a href="javascript:void(0);" class="logout">注销登录</a></dd>
+                    </dl>
+                </li>
+                <!-- 主 题 配 置 -->
+                <li class="layui-nav-item setting"><a href="#" class="layui-icon layui-icon-more-vertical"></a></li>
+            </ul>
+        </div>
+
+        <div class="layui-side">
+            <!-- 菜 单 顶 部 -->
+            <div class="layui-logo">
+                <!-- 图 标 -->
+                <img class="logo">
+                <!-- 标 题 -->
+                <span class="title"> 德州扑克 </span>
+            </div>
+            <div class="layui-side-scroll">
+                <div id="sideMenu" style="height: 100%;">
+                    <div style="height:100%!important;" class="pear-side-scroll layui-side-scroll dark-theme">
+                        <ul lay-filter="sideMenu" class="layui-nav arrow   pear-menu layui-nav-tree pear-nav-tree">
+                            <li class="layui-nav-item layui-nav-itemed"><a href="javascript:;" menu-type="0"
+                                    menu-id="business"><i class="layui-icon layui-icon-chart"></i><span>业务开发</span><i
+                                        class="layui-icon layui-icon-down layui-nav-more"></i></a>
+                                <dl class="layui-nav-child" style="height: auto;">
+                                    <dd class="layui-this"><a class="site-demo-active" menu-type="1"
+                                            menu-url="view/business/user-business.html" menu-id="11401"
+                                            menu-title="用户列表" menu-icon="layui-icon layui-icon-face-smile"
+                                            href="javascript:;" onclick="loadPage('view/business/user-business.html')"><i
+                                                class="layui-icon layui-icon-face-smile"></i><span>用户列表</span></a></dd>
+                                    <dd><a class="site-demo-active" menu-type="1"
+                                            menu-url="view/business/form-business.html" menu-id="11402"
+                                            menu-title="用户信息查询" menu-icon="layui-icon layui-icon-face-smile"
+                                            href="javascript:;" onclick="loadPage('view/business/form-business.html')"><i
+                                                class="layui-icon layui-icon-face-smile"></i><span>用户信息查询</span></a>
+                                    </dd>
+                                    <dd><a class="site-demo-active" menu-type="1"
+                                            menu-url="view/business/role-business.html" menu-id="11403"
+                                            menu-title="角色管理" menu-icon="layui-icon layui-icon-face-cry"
+                                            href="javascript:;" onclick="loadPage('view/business/role-business.html')"><i
+                                                class="layui-icon layui-icon-face-cry"></i><span>角色管理</span></a></dd>
+                                    <dd><a class="site-demo-active" menu-type="1"
+                                            menu-url="view/business/power-business.html" menu-id="11404"
+                                            menu-title="权限管理" menu-icon="layui-icon layui-icon-face-cry"
+                                            href="javascript:;" onclick="loadPage('view/business/power-business.html')"><i
+                                                class="layui-icon layui-icon-face-cry"></i><span>权限管理</span></a></dd>
+                                </dl>
+                            </li><span class="layui-nav-bar"></span>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-body">
+            <div id="content">请选择一个菜单项以加载内容。</div>
+        </div>
+        <!-- 遮 盖 层 -->
+        <div class="pear-cover"></div>
+    </div>
+
+    <script>
+        layui.use('element', function () {
+            var element = layui.element;
+        });
+
+        function loadPage(url) {
+            $("#content").load(url, function (response, status, xhr) {
+                if (status == "error") {
+                    $("#content").html("<p>加载内容时出错: " + xhr.status + " " + xhr.statusText + "</p>");
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
