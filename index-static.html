@@ -71,23 +71,27 @@
                                     <dd class="layui-this"><a class="site-demo-active" menu-type="1"
                                             menu-url="view/business/user-business.html" menu-id="11401"
                                             menu-title="用户列表" menu-icon="layui-icon layui-icon-face-smile"
-                                            href="javascript:;" onclick="loadPage('view/business/user-business.html')"><i
+                                            href="javascript:;"
+                                            onclick="loadPage('view/business/user-business.html')"><i
                                                 class="layui-icon layui-icon-face-smile"></i><span>用户列表</span></a></dd>
                                     <dd><a class="site-demo-active" menu-type="1"
                                             menu-url="view/business/form-business.html" menu-id="11402"
                                             menu-title="用户信息查询" menu-icon="layui-icon layui-icon-face-smile"
-                                            href="javascript:;" onclick="loadPage('view/business/form-business.html')"><i
+                                            href="javascript:;"
+                                            onclick="loadPage('view/business/form-business.html')"><i
                                                 class="layui-icon layui-icon-face-smile"></i><span>用户信息查询</span></a>
                                     </dd>
                                     <dd><a class="site-demo-active" menu-type="1"
                                             menu-url="view/business/role-business.html" menu-id="11403"
                                             menu-title="角色管理" menu-icon="layui-icon layui-icon-face-cry"
-                                            href="javascript:;" onclick="loadPage('view/business/role-business.html')"><i
+                                            href="javascript:;"
+                                            onclick="loadPage('view/business/role-business.html')"><i
                                                 class="layui-icon layui-icon-face-cry"></i><span>角色管理</span></a></dd>
                                     <dd><a class="site-demo-active" menu-type="1"
                                             menu-url="view/business/power-business.html" menu-id="11404"
                                             menu-title="权限管理" menu-icon="layui-icon layui-icon-face-cry"
-                                            href="javascript:;" onclick="loadPage('view/business/power-business.html')"><i
+                                            href="javascript:;"
+                                            onclick="loadPage('view/business/power-business.html')"><i
                                                 class="layui-icon layui-icon-face-cry"></i><span>权限管理</span></a></dd>
                                 </dl>
                             </li><span class="layui-nav-bar"></span>
@@ -98,7 +102,65 @@
         </div>
 
         <div class="layui-body">
-            <div id="content">请选择一个菜单项以加载内容。</div>
+            <div class="pear-tab undefined layui-tab-rollTool layui-tab" lay-filter="content" lay-allowclose="true">
+                <ul class="layui-tab-title">
+                    <li lay-id="10" class=""><span class="pear-tab-active"></span><span
+                            class="disable-close title">首页</span><i
+                            class="layui-icon layui-unselect layui-tab-close">ဆ</i></li>
+                    <li lay-id="11404"><span class="pear-tab-active"></span><span class="able-close title">权限管理</span><i
+                            class="layui-icon layui-unselect layui-tab-close">ဆ</i></li>
+                    <li lay-id="failure"><span class="pear-tab-active"></span><span class="able-close title">失败</span><i
+                            class="layui-icon layui-unselect layui-tab-close">ဆ</i></li>
+                    <li lay-id="11402" class=""><span class="pear-tab-active"></span><span
+                            class="able-close title">用户信息查询</span><i
+                            class="layui-icon layui-unselect layui-tab-close">ဆ</i></li>
+                    <li lay-id="11403" class=""><span class="pear-tab-active"></span><span
+                            class="able-close title">角色管理</span><i
+                            class="layui-icon layui-unselect layui-tab-close">ဆ</i></li>
+                    <li lay-id="11401" class="layui-this"><span class="pear-tab-active"></span><span
+                            class="able-close title">用户列表</span><i
+                            class="layui-icon layui-unselect layui-tab-close">ဆ</i></li>
+                </ul>
+                <div class="layui-tab-control">
+                    <li class="layui-tab-prev layui-icon layui-icon-left"></li>
+                    <li class="layui-tab-next layui-icon layui-icon-right"></li>
+                    <li class="layui-tab-tool layui-icon layui-icon-down">
+                        <ul class="layui-nav" lay-filter="">
+                            <li class="layui-nav-item"><a href="javascript:;"><i
+                                        class="layui-icon layui-icon-down layui-nav-more"></i></a>
+                                <dl class="layui-nav-child">
+                                    <dd id="closeThis"><a href="#">关 闭 当 前</a></dd>
+                                    <dd id="closeOther"><a href="#">关 闭 其 他</a></dd>
+                                    <dd id="closeAll"><a href="#">关 闭 全 部</a></dd>
+                                </dl>
+                            </li><span class="layui-nav-bar"></span>
+                        </ul>
+                    </li>
+                </div>
+                <div class="layui-tab-content">
+                    <div class="layui-tab-item"><iframe id="10" data-frameid="10" src="view/console/console1.html"
+                            frameborder="no" border="0" marginwidth="0" marginheight="0"
+                            style="width: 100%;height: 100%;"></iframe></div>
+                    <div class="layui-tab-item"><iframe id="11404" data-frameid="11404"
+                            src="view/business/power-business.html" frameborder="no" border="0" marginwidth="0"
+                            marginheight="0" style="width: 100%;height: 100%;"></iframe></div>
+                    <div class="layui-tab-item"><iframe id="failure" data-frameid="failure" src="view/result/error.html"
+                            frameborder="no" border="0" marginwidth="0" marginheight="0"
+                            style="width: 100%;height: 100%;"></iframe></div>
+                    <div class="layui-tab-item"><iframe id="11402" data-frameid="11402"
+                            src="view/business/form-business.html" frameborder="no" border="0" marginwidth="0"
+                            marginheight="0" style="width: 100%;height: 100%;"></iframe></div>
+                    <div class="layui-tab-item"><iframe id="11403" data-frameid="11403"
+                            src="view/business/role-business.html" frameborder="no" border="0" marginwidth="0"
+                            marginheight="0" style="width: 100%;height: 100%;"></iframe></div>
+                    <div class="layui-tab-item layui-show"><iframe id="11401" data-frameid="11401" scrolling="auto"
+                            frameborder="0" src="view/business/user-business.html"
+                            style="width:100%;height:100%;"></iframe></div>
+                </div>
+                <div id="pear-tab-loading0" class="pear-tab-loading" style="display: none;">
+                    <div class="ball-loader"><span></span><span></span><span></span><span></span></div>
+                </div>
+            </div>
         </div>
         <!-- 遮 盖 层 -->
         <div class="pear-cover"></div>
