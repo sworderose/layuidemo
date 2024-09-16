@@ -5,7 +5,39 @@
 	<meta charset="utf-8">
 	<title>角色管理</title>
 	<link href="../../component/pear/css/pear.css" rel="stylesheet" />
-	<link rel="stylesheet" href="admin/css/admin.css" >
+	<link rel="stylesheet" href="admin/css/admin.css">
+	<style>
+		/* 统一样式 */
+		#role-business-table+.layui-table-view thead .layui-table-cell {
+			display: table-cell;
+			vertical-align: middle;
+			background-color: #fff;
+			/* MediumSeaGreen */
+			color: #333;
+			font-weight: bold;
+			white-space: normal;
+			line-height: 15px;
+		}
+
+		/* 针对第二个表头的定制 */
+		#role-business-table+.layui-table-view thead th:nth-child(2) .layui-table-cell {
+			background-color: #fff; /* 表头背景颜色 */
+            color: #af2323 !important; /* 文字颜色 */
+            font-size: 18px; /* 字体大小 */
+            font-weight: bold; /* 字体加粗 */
+            text-align: center; /* 文本居中 */
+            height: 60px; /* 高度 */
+            line-height: 1.2; /* 行高，保持文本居中 */
+            white-space: nowrap; /* 防止换行 */
+            overflow: hidden; /* 隐藏溢出的文本 */
+            text-overflow: ellipsis; /* 显示省略号 */
+            padding: 10px; /* 内边距 */
+            /* CSS Grid Layout to handle multi-line clamping */
+            display: grid;
+            grid-template-rows: 1fr; /* 允许一个行的空间 */
+            max-height: 1.2em; /* 最大高度以限制行数 */
+		}
+	</style>
 </head>
 
 <body class="pear-container">
@@ -41,7 +73,7 @@
 	</div>
 	<div class="layui-card">
 		<div class="layui-card-body">
-			<table id="role-table" lay-filter="role-table"></table>
+			<table id="role-business-table" lay-filter="roleTable"></table>
 		</div>
 	</div>
 
@@ -80,8 +112,8 @@
 			let cols = [
 				[
 					{ type: 'checkbox' },
-					{ title: '角色名', field: 'roleName', align: 'center', width: 100 },
-					{ title: 'Key值', field: 'roleCode', align: 'center' },
+					{ title: '角色名角色名角色名角色名角色名角色名', field: 'roleName', align: 'center', width: 100 },
+					{ title: 'Key值角色名角色名角色名角色名角色名', field: 'roleCode', align: 'center' },
 					{ title: '描述', field: 'details', align: 'center' },
 					{ title: '是否可用', field: 'enable', align: 'center', templet: '#role-enable' },
 					{ title: '操作', toolbar: '#role-bar', align: 'center', width: 195 }
@@ -89,7 +121,7 @@
 			]
 
 			table.render({
-				elem: '#role-table',
+				elem: '#role-business-table',
 				url: '../../admin/data/role.json',
 				page: true,
 				cols: cols,
@@ -449,7 +481,7 @@
 					</div>
 				</div>
 			</div>
-			
+
 		</div>
 
 		<!-- 保存和提交按钮 -->
