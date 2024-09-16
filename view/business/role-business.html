@@ -74,7 +74,8 @@
 			let form = layui.form;
 			var $ = jQuery = layui.jquery;
 			var transfer = layui.transfer;
-			let MODULE_PATH = "operate/";
+			let tree = layui.tree;
+
 
 			let cols = [
 				[
@@ -279,7 +280,7 @@
 
 			// 模态框
 			window.openWindow = function () {
-				console.log("111")
+				loadPermissionTree();
 				$("#openWindow_userid").val($("#user").val());
 				$("#openWindow_goodsid").val("");
 				$("#num").val("");
@@ -291,7 +292,7 @@
 					title: "模态框样式",
 					shadeClose: true, //开启遮罩关闭
 					shade: 0.6, //遮罩透明度
-					area: 'auto',
+					area: ['80%', '80%'],
 					maxmin: true, //允许全屏最小化
 					anim: 1, //0-6的动画形式，-1不开启
 					content: $('#openWindowPage'), //捕获的元素，注意：最好该指定的元素要存放在body最外层，否则可能被其它的相对元素所影响
@@ -299,6 +300,70 @@
 					}
 				});
 			}
+
+			var loadPermissionTree = function () {
+				tree.render({
+					elem: '#permissionTree',
+					data: [
+						{
+							title: '系统管理',  // 节点名称
+							id: 1,  // 节点ID
+							children: [  // 子节点
+								{
+									title: '用户管理',
+									id: 11,
+									children: [
+										{ title: '添加用户', id: 111 },
+										{ title: '删除用户', id: 112 },
+										{ title: '修改用户', id: 113 }
+									]
+								},
+								{
+									title: '角色管理',
+									id: 12,
+									children: [
+										{ title: '添加角色', id: 121 },
+										{ title: '删除角色', id: 122 },
+										{ title: '修改角色', id: 123 }
+									]
+								}
+							]
+						},
+						{
+							title: '内容管理',
+							id: 2,
+							children: [
+								{
+									title: '文章管理',
+									id: 21,
+									children: [
+										{ title: '添加文章', id: 211 },
+										{ title: '删除文章', id: 212 },
+										{ title: '修改文章', id: 213 }
+									]
+								},
+								{
+									title: '分类管理',
+									id: 22,
+									children: [
+										{ title: '添加分类', id: 221 },
+										{ title: '删除分类', id: 222 },
+										{ title: '修改分类', id: 223 }
+									]
+								}
+							]
+						}
+					],
+					onlyIconControl: true,  //是否仅允许节点左侧图标控制展开收缩
+					showCheckbox: true,  //是否显示复选框
+					id: 'permissionIds',
+					accordion: false,
+					click: function (obj) {
+						selectNode = obj;
+						layer.msg(JSON.stringify(selectNode.data.title));
+					}
+				});
+			};
 		})
 	</script>
 	<div id="roles" class="demo-transfer" style="display: none"></div>
@@ -364,7 +429,7 @@
 					</div>
 				</div>
 			</div>
-            <!-- 单选框 表单项 -->
+			<!-- 单选框 表单项 -->
 			<div class="layui-form-item">
 				<label class="layui-form-label" style="width: 100px;">性别</label>
 				<div class="layui-form layui-card-body">
@@ -375,6 +440,16 @@
 					</div>
 				</div>
 			</div>
+			<!-- 权限tree -->
+			<div class="layui-form-item">
+				<label class="layui-form-label" style="width: 100px;">请选择权限</label>
+				<div class="layui-form layui-card-body layui-input-block" style="margin-top: -25px;">
+					<div class="layui-tree">
+						<div id="permissionTree"></div>
+					</div>
+				</div>
+			</div>
+			
 		</div>
 
 		<!-- 保存和提交按钮 -->
@@ -390,4 +465,5 @@
 		</div>
 	</div>
 </div>
+
 </html>
