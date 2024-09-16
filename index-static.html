@@ -4,27 +4,303 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Layui 动态加载页面示例</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/layui@2.7.6/dist/layui.js"></script>
+    <title> Pear Admin Layui </title>
     <!-- 依 赖 样 式 -->
-    <link rel="stylesheet" href="component/pear/css/pear.css" />
+    <link rel="stylesheet" href="component/pear/css/pear.css">
     <!-- 加 载 样 式 -->
-    <link rel="stylesheet" href="admin/css/loader.css" />
+    <link rel="stylesheet" href="admin/css/loader.css">
     <!-- 布 局 样 式 -->
     <link rel="stylesheet" href="admin/css/admin.css">
+    <link id="layuicss-laydate" rel="stylesheet"
+        href="http://127.0.0.1:8080/component/layui/css/modules/laydate/default/laydate.css?v=5.3.1" media="all">
+    <link id="layuicss-layer" rel="stylesheet"
+        href="http://127.0.0.1:8080/component/layui/css/modules/layer/default/layer.css?v=3.6.0" media="all">
+    <link id="layuicss-skincodecss" rel="stylesheet"
+        href="http://127.0.0.1:8080/component/layui/css/modules/code.css?v=2" media="all">
+    <style id="pear-admin-color">
+        .light-theme .pear-nav-tree .layui-this a:hover,
+        .light-theme .pear-nav-tree .layui-this,
+        .light-theme .pear-nav-tree .layui-this a,
+        .pear-nav-tree .layui-this a,
+        .pear-nav-tree .layui-this {
+            background-color: #f6ad55 !important;
+        }
+
+        .pear-admin .layui-logo .title {
+            color: #f6ad55 !important;
+        }
+
+        .pear-frame-title .dot,
+        .pear-tab .layui-this .pear-tab-active {
+            background-color: #f6ad55 !important;
+        }
+
+        .bottom-nav li a:hover {
+            background-color: #f6ad55 !important;
+        }
+
+        .pear-admin .layui-header .layui-nav .layui-nav-bar {
+            background-color: #f6ad55 !important;
+        }
+
+        .ball-loader>span,
+        .signal-loader>span {
+            background-color: #f6ad55 !important;
+        }
+
+        .layui-header .layui-nav-child .layui-this a {
+            background-color: #f6ad55 !important;
+            color: white !important;
+        }
+
+        #preloader {
+            background-color: #f6ad55 !important;
+        }
+
+        .pearone-color .color-content li.layui-this:after,
+        .pearone-color .color-content li:hover:after {
+            border: #f6ad55 3px solid !important;
+        }
+
+        .layui-nav .layui-nav-child dd.layui-this a,
+        .layui-nav-child dd.layui-this {
+            background-color: #f6ad55;
+            color: white;
+        }
+
+        .pear-social-entrance {
+            background-color: #f6ad55 !important
+        }
+
+        .pear-admin .pe-collapse {
+            background-color: #f6ad55 !important
+        }
+
+        .layui-fixbar li {
+            background-color: #f6ad55 !important
+        }
+
+        .pear-btn-primary {
+            background-color: #f6ad55 !important
+        }
+
+        .layui-input:focus,
+        .layui-textarea:focus {
+            border-color: #f6ad55 !important;
+            box-shadow: 0 0 0 3px #fdf6ec !important;
+        }
+
+        .layui-form-checkbox[lay-skin=primary]:hover span {
+            background-color: initial;
+        }
+
+        .layui-form-checked[lay-skin=primary] i {
+            border-color: #f6ad55 !important;
+            background-color: #f6ad55;
+        }
+
+        .layui-form-checked,
+        .layui-form-checked:hover {
+            border-color: #f6ad55 !important;
+        }
+
+        .layui-form-checked span,
+        .layui-form-checked:hover span {
+            background-color: #f6ad55;
+        }
+
+        .layui-form-checked i,
+        .layui-form-checked:hover i {
+            color: #f6ad55;
+        }
+
+        .layui-form-onswitch {
+            border-color: #f6ad55;
+            background-color: #f6ad55;
+        }
+
+        .layui-form-radio>i:hover,
+        .layui-form-radioed>i {
+            color: #f6ad55;
+        }
+
+        .layui-laypage .layui-laypage-curr .layui-laypage-em {
+            background-color: #f6ad55 !important
+        }
+
+        .layui-tab-brief>.layui-tab-more li.layui-this:after,
+        .layui-tab-brief>.layui-tab-title .layui-this:after {
+            border-bottom: 3px solid #f6ad55 !important
+        }
+
+        .layui-tab-brief>.layui-tab-title .layui-this {
+            color: #f6ad55 !important
+        }
+
+        .layui-progress-bar {
+            background-color: #f6ad55
+        }
+
+        .layui-elem-quote {
+            border-left: 5px solid #f6ad55
+        }
+
+        .layui-timeline-axis {
+            color: #f6ad55
+        }
+
+        .layui-laydate .layui-this {
+            background-color: #f6ad55 !important
+        }
+
+        .pear-this,
+        .pear-text {
+            color: #f6ad55 !important
+        }
+
+        .pear-back {
+            background-color: #f6ad55 !important
+        }
+
+        .pear-collapsed-pe {
+            background-color: #f6ad55 !important
+        }
+
+        .layui-form-select dl dd.layui-this {
+            color: #f6ad55 !important;
+        }
+
+        .tag-item-normal {
+            background: #f6ad55 !important
+        }
+
+        .step-item-head.step-item-head-active {
+            background-color: #f6ad55
+        }
+
+        .step-item-head {
+            border: 3px solid #f6ad55;
+        }
+
+        .step-item-tail i {
+            background-color: #f6ad55
+        }
+
+        .step-item-head {
+            color: #f6ad55
+        }
+
+        div[xm-select-skin=normal] .xm-select-title div.xm-select-label>span i {
+            background-color: #f6ad55 !important
+        }
+
+        div[xm-select-skin=normal] .xm-select-title div.xm-select-label>span {
+            border: 1px solid #f6ad55 !important;
+            background-color: #f6ad55 !important
+        }
+
+        div[xm-select-skin=normal] dl dd:not(.xm-dis-disabled) i {
+            border-color: #f6ad55 !important
+        }
+
+        div[xm-select-skin=normal] dl dd.xm-select-this:not(.xm-dis-disabled) i {
+            color: #f6ad55 !important
+        }
+
+        div[xm-select-skin=normal].xm-form-selected .xm-select,
+        div[xm-select-skin=normal].xm-form-selected .xm-select:hover {
+            border-color: #f6ad55 !important
+        }
+
+        .layui-layer-btn a:first-child {
+            border-color: #f6ad55;
+            background-color: #f6ad55 !important
+        }
+
+        .layui-form-checkbox[lay-skin=primary]:hover i {
+            border-color: #f6ad55 !important
+        }
+
+        .pear-tab-menu .item:hover {
+            background-color: #f6ad55 !important
+        }
+
+        .layui-form-danger:focus {
+            border-color: #FF5722 !important
+        }
+
+        .pear-admin .user .layui-this a:hover {
+            color: white !important
+        }
+
+        .pear-admin .user a:hover {
+            color: #f6ad55 !important
+        }
+
+        .pear-notice .layui-this {
+            color: #f6ad55 !important
+        }
+
+        .layui-form-radio:hover *,
+        .layui-form-radioed,
+        .layui-form-radioed>i {
+            color: #f6ad55 !important
+        }
+
+        .pear-btn:hover {
+            color: #f6ad55;
+            background-color: #fdf6ec;
+        }
+
+        .pear-btn-primary[plain] {
+            color: #f6ad55 !important;
+            background: #fdf6ec !important;
+        }
+
+        .pear-btn-primary[plain]:hover {
+            background-color: #f6ad55 !important
+        }
+
+        .light-theme .pear-nav-tree .layui-this a:hover,
+        .light-theme .pear-nav-tree .layui-this,
+        .light-theme .pear-nav-tree .layui-this a {
+            background-color: #fdf6ec !important;
+            color: #f6ad55 !important;
+        }
+
+        .light-theme .pear-nav-tree .layui-this {
+            border-right: 3px solid #f6ad55 !important
+        }
+
+        .loader:after {
+            background: #f6ad55
+        }
+
+        .menu-search-list li:hover,
+        .menu-search-list li.this {
+            background-color: #f6ad55
+        }
+    </style>
 </head>
 
 <body class="layui-layout-body pear-admin">
+    <!-- 布 局 框 架 -->
     <div class="layui-layout layui-layout-admin">
         <!-- 顶 部 样 式 -->
-        <div class="layui-header">
-            <div class="layui-logo">Pear Admin</div>
+        <div class="layui-header light-theme">
+            <!-- 菜 单 顶 部 -->
+            <div class="layui-logo">
+                <!-- 图 标 -->
+                <img class="logo" src="admin/images/logo.png">
+                <!-- 标 题 -->
+                <span class="title">Pear Admin</span>
+            </div>
             <!-- 顶 部 左 侧 功 能 -->
             <ul class="layui-nav layui-layout-left">
                 <li class="collapse layui-nav-item"><a href="#" class="layui-icon layui-icon-shrink-right"></a></li>
-                <li class="refresh layui-nav-item"><a href="#" class="layui-icon layui-icon-refresh-1" loading=600></a>
-                </li>
+                <li class="refresh layui-nav-item"><a href="#" class="layui-icon layui-icon-refresh-1"
+                        loading="600"></a></li>
+                <span class="layui-nav-bar"></span>
             </ul>
             <!-- 多 系 统 菜 单 -->
             <div id="control" class="layui-layout-control"></div>
@@ -36,10 +312,121 @@
                         class="fullScreen layui-icon layui-icon-screen-full"></a></li>
                 <li class="layui-nav-item layui-hide-xs"><a href="http://www.pearadmin.com"
                         class="layui-icon layui-icon-website"></a></li>
-                <li class="layui-nav-item layui-hide-xs message"></li>
+                <li class="layui-nav-item layui-hide-xs message">
+                <li class="layui-nav-item" lay-unselect=""><a href="#" class="notice layui-icon layui-icon-notice"><span
+                            class="layui-badge-dot"></span><i class="layui-icon layui-icon-down layui-nav-more"></i></a>
+                    <div class="layui-nav-child layui-tab pear-notice layui-anim layui-anim-upbit"
+                        style="margin-top: 0px;left: -200px;">
+                        <ul class="layui-tab-title">
+                            <li class="pear-this">通知</li>
+                            <li>消息</li>
+                            <li>代办</li>
+                        </ul>
+                        <div class="layui-tab-content" style="height:250px;overflow-x: hidden;">
+                            <div class="layui-tab-item layui-show">
+                                <div class="pear-notice-item" notice-form="就眠仪式" notice-context="这是消息内容。"
+                                    notice-title="你收到了 14 份新周报" notice-id="11"><img
+                                        src="https://gw.alipayobjects.com/zos/rmsportal/ThXAXghbEsBCCSDihZxY.png">
+                                    <div style="display:inline-block;">你收到了 14 份新周报</div>
+                                    <div class="pear-notice-end">刚刚</div>
+                                </div>
+                                <div class="pear-notice-item" notice-form="就眠仪式" notice-context="这是消息内容。"
+                                    notice-title="曲妮妮 已通过第三轮面试" notice-id="12"><img
+                                        src="https://gw.alipayobjects.com/zos/rmsportal/OKJXDXrmkNshAMvwtvhu.png">
+                                    <div style="display:inline-block;">曲妮妮 已通过第三轮面试</div>
+                                    <div class="pear-notice-end">刚刚</div>
+                                </div>
+                                <div class="pear-notice-item" notice-form="就眠仪式" notice-context="这是消息内容。"
+                                    notice-title="可以区分多种通知类型" notice-id="11"><img
+                                        src="https://gw.alipayobjects.com/zos/rmsportal/kISTdvpyTAhtGxpovNWd.png">
+                                    <div style="display:inline-block;">可以区分多种通知类型</div>
+                                    <div class="pear-notice-end">刚刚</div>
+                                </div>
+                                <div class="pear-notice-item" notice-form="就眠仪式" notice-context="这是消息内容。"
+                                    notice-title="左侧图标用于区分不同的类型" notice-id="12"><img
+                                        src="https://gw.alipayobjects.com/zos/rmsportal/GvqBnKhFgObvnSGkDsje.png">
+                                    <div style="display:inline-block;">左侧图标用于区分不同的类型</div>
+                                    <div class="pear-notice-end">刚刚</div>
+                                </div>
+                                <div class="pear-notice-item" notice-form="就眠仪式" notice-context="这是消息内容。"
+                                    notice-title="内容不要超过两行字" notice-id="11"><img
+                                        src="https://gw.alipayobjects.com/zos/rmsportal/ThXAXghbEsBCCSDihZxY.png">
+                                    <div style="display:inline-block;">内容不要超过两行字</div>
+                                    <div class="pear-notice-end">刚刚</div>
+                                </div>
+                            </div>
+                            <div class="layui-tab-item">
+                                <div class="pear-notice-item" notice-form="就眠仪式" notice-context="这是消息内容。"
+                                    notice-title="你收到了 14 份新周报" notice-id="11"><img
+                                        src="https://gw.alipayobjects.com/zos/rmsportal/ThXAXghbEsBCCSDihZxY.png">
+                                    <div style="display:inline-block;">你收到了 14 份新周报</div>
+                                    <div class="pear-notice-end">刚刚</div>
+                                </div>
+                                <div class="pear-notice-item" notice-form="就眠仪式" notice-context="这是消息内容。"
+                                    notice-title="曲妮妮 已通过第三轮面试" notice-id="12"><img
+                                        src="https://gw.alipayobjects.com/zos/rmsportal/OKJXDXrmkNshAMvwtvhu.png">
+                                    <div style="display:inline-block;">曲妮妮 已通过第三轮面试</div>
+                                    <div class="pear-notice-end">刚刚</div>
+                                </div>
+                                <div class="pear-notice-item" notice-form="就眠仪式" notice-context="这是消息内容。"
+                                    notice-title="可以区分多种通知类型" notice-id="11"><img
+                                        src="https://gw.alipayobjects.com/zos/rmsportal/kISTdvpyTAhtGxpovNWd.png">
+                                    <div style="display:inline-block;">可以区分多种通知类型</div>
+                                    <div class="pear-notice-end">刚刚</div>
+                                </div>
+                                <div class="pear-notice-item" notice-form="就眠仪式" notice-context="这是消息内容。"
+                                    notice-title="左侧图标用于区分不同的类型" notice-id="12"><img
+                                        src="https://gw.alipayobjects.com/zos/rmsportal/GvqBnKhFgObvnSGkDsje.png">
+                                    <div style="display:inline-block;">左侧图标用于区分不同的类型</div>
+                                    <div class="pear-notice-end">刚刚</div>
+                                </div>
+                                <div class="pear-notice-item" notice-form="就眠仪式" notice-context="这是消息内容。"
+                                    notice-title="内容不要超过两行字" notice-id="11"><img
+                                        src="https://gw.alipayobjects.com/zos/rmsportal/ThXAXghbEsBCCSDihZxY.png">
+                                    <div style="display:inline-block;">内容不要超过两行字</div>
+                                    <div class="pear-notice-end">刚刚</div>
+                                </div>
+                            </div>
+                            <div class="layui-tab-item">
+                                <div class="pear-notice-item" notice-form="就眠仪式" notice-context="这是消息内容。"
+                                    notice-title="你收到了 14 份新周报" notice-id="11"><img
+                                        src="https://gw.alipayobjects.com/zos/rmsportal/ThXAXghbEsBCCSDihZxY.png">
+                                    <div style="display:inline-block;">你收到了 14 份新周报</div>
+                                    <div class="pear-notice-end">刚刚</div>
+                                </div>
+                                <div class="pear-notice-item" notice-form="就眠仪式" notice-context="这是消息内容。"
+                                    notice-title="曲妮妮 已通过第三轮面试" notice-id="12"><img
+                                        src="https://gw.alipayobjects.com/zos/rmsportal/OKJXDXrmkNshAMvwtvhu.png">
+                                    <div style="display:inline-block;">曲妮妮 已通过第三轮面试</div>
+                                    <div class="pear-notice-end">刚刚</div>
+                                </div>
+                                <div class="pear-notice-item" notice-form="就眠仪式" notice-context="这是消息内容。"
+                                    notice-title="可以区分多种通知类型" notice-id="11"><img
+                                        src="https://gw.alipayobjects.com/zos/rmsportal/kISTdvpyTAhtGxpovNWd.png">
+                                    <div style="display:inline-block;">可以区分多种通知类型</div>
+                                    <div class="pear-notice-end">刚刚</div>
+                                </div>
+                                <div class="pear-notice-item" notice-form="就眠仪式" notice-context="这是消息内容。"
+                                    notice-title="左侧图标用于区分不同的类型" notice-id="12"><img
+                                        src="https://gw.alipayobjects.com/zos/rmsportal/GvqBnKhFgObvnSGkDsje.png">
+                                    <div style="display:inline-block;">左侧图标用于区分不同的类型</div>
+                                    <div class="pear-notice-end">刚刚</div>
+                                </div>
+                                <div class="pear-notice-item" notice-form="就眠仪式" notice-context="这是消息内容。"
+                                    notice-title="内容不要超过两行字" notice-id="11"><img
+                                        src="https://gw.alipayobjects.com/zos/rmsportal/ThXAXghbEsBCCSDihZxY.png">
+                                    <div style="display:inline-block;">内容不要超过两行字</div>
+                                    <div class="pear-notice-end">刚刚</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                </li>
                 <li class="layui-nav-item user">
                     <!-- 头 像 -->
-                    <a class="layui-icon layui-icon-username" href="javascript:;"></a>
+                    <a class="layui-icon layui-icon-username" href="javascript:;"><i
+                            class="layui-icon layui-icon-down layui-nav-more"></i></a>
                     <!-- 功 能 菜 单 -->
                     <dl class="layui-nav-child">
                         <dd><a user-menu-url="view/system/person.html" user-menu-id="5555"
@@ -49,136 +436,466 @@
                 </li>
                 <!-- 主 题 配 置 -->
                 <li class="layui-nav-item setting"><a href="#" class="layui-icon layui-icon-more-vertical"></a></li>
+                <span class="layui-nav-bar" style="left: 20px; top: 58.6953px; width: 0px; opacity: 0;"></span>
             </ul>
         </div>
-
-        <div class="layui-side">
+        <!-- 侧 边 区 域 -->
+        <div class="layui-side layui-bg-black dark-theme">
             <!-- 菜 单 顶 部 -->
             <div class="layui-logo">
                 <!-- 图 标 -->
-                <img class="logo">
+                <img class="logo" src="admin/images/logo.png">
                 <!-- 标 题 -->
-                <span class="title"> 德州扑克 </span>
+                <span class="title">Pear Admin</span>
             </div>
+            <!-- 菜 单 内 容 -->
             <div class="layui-side-scroll">
                 <div id="sideMenu" style="height: 100%;">
                     <div style="height:100%!important;" class="pear-side-scroll layui-side-scroll dark-theme">
                         <ul lay-filter="sideMenu" class="layui-nav arrow   pear-menu layui-nav-tree pear-nav-tree">
+                            <li class="layui-nav-item"><a href="javascript:;" menu-type="0" menu-id="1"><i
+                                        class="layui-icon layui-icon-console"></i><span>工作空间</span><i
+                                        class="layui-icon layui-icon-down layui-nav-more"></i></a>
+                                <dl class="layui-nav-child" style="height: auto;">
+                                    <dd class=""><a class="site-demo-active" menu-type="1"
+                                            menu-url="view/console/console1.html" menu-id="10" menu-title="控制后台"
+                                            menu-icon="layui-icon layui-icon-console" href="javascript:;"><i
+                                                class="layui-icon layui-icon-console"></i><span>控制后台</span></a></dd>
+                                    <dd><a class="site-demo-active" menu-type="1" menu-url="view/console/console2.html"
+                                            menu-id="13" menu-title="数据分析" menu-icon="layui-icon layui-icon-console"
+                                            href="javascript:;"><i
+                                                class="layui-icon layui-icon-console"></i><span>数据分析</span></a></dd>
+                                    <dd><a class="site-demo-active" menu-type="1" menu-url="http://www.bing.com"
+                                            menu-id="14" menu-title="百度一下" menu-icon="layui-icon layui-icon-console"
+                                            href="javascript:;"><i
+                                                class="layui-icon layui-icon-console"></i><span>百度一下</span></a></dd>
+                                    <dd><a class="site-demo-active" menu-type="1" menu-url="view/system/theme.html"
+                                            menu-id="15" menu-title="主题预览" menu-icon="layui-icon layui-icon-console"
+                                            href="javascript:;"><i
+                                                class="layui-icon layui-icon-console"></i><span>主题预览</span></a></dd>
+                                    <dd><a class="site-demo-active" menu-type="1" menu-url="view/document/core.html"
+                                            menu-id="16" menu-title="酸爽翻倍" menu-icon="layui-icon layui-icon-console"
+                                            href="javascript:;"><i
+                                                class="layui-icon layui-icon-console"></i><span>酸爽翻倍</span></a></dd>
+                                </dl>
+                            </li>
+                            <li class="layui-nav-item"><a href="javascript:;" menu-type="0" menu-id="component"><i
+                                        class="layui-icon layui-icon-component"></i><span>常用组件</span><i
+                                        class="layui-icon layui-icon-down layui-nav-more"></i></a>
+                                <dl class="layui-nav-child">
+                                    <dd><a href="javascript:;" menu-type="0" menu-id="201"><i
+                                                class="layui-icon layui-icon-console"></i><span>基础组件</span><i
+                                                class="layui-icon layui-icon-down layui-nav-more"></i></a>
+                                        <dl class="layui-nav-child">
+                                            <dd><a class="site-demo-active" menu-type="1"
+                                                    menu-url="view/document/button.html" menu-id="2011"
+                                                    menu-title="功能按钮" menu-icon="layui-icon layui-icon-face-smile"
+                                                    href="javascript:;"><i
+                                                        class="layui-icon layui-icon-face-smile"></i><span>功能按钮</span></a>
+                                            </dd>
+                                            <dd><a class="site-demo-active" menu-type="1"
+                                                    menu-url="view/document/form.html" menu-id="2014" menu-title="表单集合"
+                                                    menu-icon="layui-icon layui-icon-face-cry" href="javascript:;"><i
+                                                        class="layui-icon layui-icon-face-cry"></i><span>表单集合</span></a>
+                                            </dd>
+                                            <dd><a class="site-demo-active" menu-type="1"
+                                                    menu-url="view/document/icon.html" menu-id="2010" menu-title="字体图标"
+                                                    menu-icon="layui-icon layui-icon-face-cry" href="javascript:;"><i
+                                                        class="layui-icon layui-icon-face-cry"></i><span>字体图标</span></a>
+                                            </dd>
+                                            <dd><a class="site-demo-active" menu-type="1"
+                                                    menu-url="view/document/select.html" menu-id="2012"
+                                                    menu-title="多选下拉" menu-icon="layui-icon layui-icon-face-cry"
+                                                    href="javascript:;"><i
+                                                        class="layui-icon layui-icon-face-cry"></i><span>多选下拉</span></a>
+                                            </dd>
+                                            <dd><a class="site-demo-active" menu-type="1"
+                                                    menu-url="view/document/tag.html" menu-id="2013" menu-title="动态标签"
+                                                    menu-icon="layui-icon layui-icon-face-cry" href="javascript:;"><i
+                                                        class="layui-icon layui-icon-face-cry"></i><span>动态标签</span></a>
+                                            </dd>
+                                        </dl>
+                                    </dd>
+                                    <dd><a href="javascript:;" menu-type="0" menu-id="203"><i
+                                                class="layui-icon layui-icon-console"></i><span>进阶组件</span><i
+                                                class="layui-icon layui-icon-down layui-nav-more"></i></a>
+                                        <dl class="layui-nav-child">
+                                            <dd><a class="site-demo-active" menu-type="1"
+                                                    menu-url="view/document/table.html" menu-id="2031" menu-title="数据表格"
+                                                    menu-icon="layui-icon layui-icon-face-cry" href="javascript:;"><i
+                                                        class="layui-icon layui-icon-face-cry"></i><span>数据表格</span></a>
+                                            </dd>
+                                            <dd><a class="site-demo-active" menu-type="1"
+                                                    menu-url="view/document/step.html" menu-id="2032" menu-title="分布表单"
+                                                    menu-icon="layui-icon layui-icon-face-cry" href="javascript:;"><i
+                                                        class="layui-icon layui-icon-face-cry"></i><span>分布表单</span></a>
+                                            </dd>
+                                            <dd><a class="site-demo-active" menu-type="1"
+                                                    menu-url="view/document/treetable.html" menu-id="2033"
+                                                    menu-title="树形表格" menu-icon="layui-icon layui-icon-face-cry"
+                                                    href="javascript:;"><i
+                                                        class="layui-icon layui-icon-face-cry"></i><span>树形表格</span></a>
+                                            </dd>
+                                            <dd><a class="site-demo-active" menu-type="1"
+                                                    menu-url="view/document/dtree.html" menu-id="2034" menu-title="树状结构"
+                                                    menu-icon="layui-icon layui-icon-face-cry" href="javascript:;"><i
+                                                        class="layui-icon layui-icon-face-cry"></i><span>树状结构</span></a>
+                                            </dd>
+                                            <dd><a class="site-demo-active" menu-type="1"
+                                                    menu-url="view/document/tinymce.html" menu-id="2035"
+                                                    menu-title="文本编辑" menu-icon="layui-icon layui-icon-face-cry"
+                                                    href="javascript:;"><i
+                                                        class="layui-icon layui-icon-face-cry"></i><span>文本编辑</span></a>
+                                            </dd>
+                                            <dd><a class="site-demo-active" menu-type="1"
+                                                    menu-url="view/document/card.html" menu-id="2036" menu-title="卡片组件"
+                                                    menu-icon="layui-icon layui-icon-face-cry" href="javascript:;"><i
+                                                        class="layui-icon layui-icon-face-cry"></i><span>卡片组件</span></a>
+                                            </dd>
+                                        </dl>
+                                    </dd>
+                                    <dd><a href="javascript:;" menu-type="0" menu-id="202"><i
+                                                class="layui-icon layui-icon-console"></i><span>弹层组件</span><i
+                                                class="layui-icon layui-icon-down layui-nav-more"></i></a>
+                                        <dl class="layui-nav-child">
+                                            <dd><a class="site-demo-active" menu-type="1"
+                                                    menu-url="view/document/drawer.html" menu-id="2021"
+                                                    menu-title="抽屉组件" menu-icon="layui-icon layui-icon-face-cry"
+                                                    href="javascript:;"><i
+                                                        class="layui-icon layui-icon-face-cry"></i><span>抽屉组件</span></a>
+                                            </dd>
+                                            <dd><a class="site-demo-active" menu-type="1"
+                                                    menu-url="view/document/notice.html" menu-id="2022"
+                                                    menu-title="消息通知 (过时)" menu-icon="layui-icon layui-icon-face-cry"
+                                                    href="javascript:;"><i
+                                                        class="layui-icon layui-icon-face-cry"></i><span>消息通知
+                                                        (过时)</span></a></dd>
+                                            <dd><a class="site-demo-active" menu-type="1"
+                                                    menu-url="view/document/toast.html" menu-id="2025"
+                                                    menu-title="消息通知 (新增)" menu-icon="layui-icon layui-icon-face-cry"
+                                                    href="javascript:;"><i
+                                                        class="layui-icon layui-icon-face-cry"></i><span>消息通知
+                                                        (新增)</span></a></dd>
+                                            <dd><a class="site-demo-active" menu-type="1"
+                                                    menu-url="view/document/loading.html" menu-id="2024"
+                                                    menu-title="加载组件" menu-icon="layui-icon layui-icon-face-cry"
+                                                    href="javascript:;"><i
+                                                        class="layui-icon layui-icon-face-cry"></i><span>加载组件</span></a>
+                                            </dd>
+                                            <dd><a class="site-demo-active" menu-type="1"
+                                                    menu-url="view/document/popup.html" menu-id="2023" menu-title="弹层组件"
+                                                    menu-icon="layui-icon layui-icon-face-cry" href="javascript:;"><i
+                                                        class="layui-icon layui-icon-face-cry"></i><span>弹层组件</span></a>
+                                            </dd>
+                                        </dl>
+                                    </dd>
+                                    <dd><a href="javascript:;" menu-type="0" menu-id="60331"><i
+                                                class="layui-icon layui-icon-console"></i><span>高级组件</span><i
+                                                class="layui-icon layui-icon-down layui-nav-more"></i></a>
+                                        <dl class="layui-nav-child">
+                                            <dd><a class="site-demo-active" menu-type="1"
+                                                    menu-url="view/document/tab.html" menu-id="60131" menu-title="多选项卡"
+                                                    menu-icon="layui-icon layui-icon-face-cry" href="javascript:;"><i
+                                                        class="layui-icon layui-icon-face-cry"></i><span>多选项卡</span></a>
+                                            </dd>
+                                            <dd><a class="site-demo-active" menu-type="1"
+                                                    menu-url="view/document/menu.html" menu-id="60132" menu-title="数据菜单"
+                                                    menu-icon="layui-icon layui-icon-face-cry" href="javascript:;"><i
+                                                        class="layui-icon layui-icon-face-cry"></i><span>数据菜单</span></a>
+                                            </dd>
+                                        </dl>
+                                    </dd>
+                                    <dd><a href="javascript:;" menu-type="0" menu-id="204"><i
+                                                class="layui-icon layui-icon-console"></i><span>其他组件</span><i
+                                                class="layui-icon layui-icon-down layui-nav-more"></i></a>
+                                        <dl class="layui-nav-child">
+                                            <dd><a class="site-demo-active" menu-type="1"
+                                                    menu-url="view/document/hash.html" menu-id="2041" menu-title="哈希加密"
+                                                    menu-icon="layui-icon layui-icon-face-cry" href="javascript:;"><i
+                                                        class="layui-icon layui-icon-face-cry"></i><span>哈希加密</span></a>
+                                            </dd>
+                                            <dd><a class="site-demo-active" menu-type="1"
+                                                    menu-url="view/document/iconPicker.html" menu-id="2042"
+                                                    menu-title="图标选择" menu-icon="layui-icon layui-icon-face-cry"
+                                                    href="javascript:;"><i
+                                                        class="layui-icon layui-icon-face-cry"></i><span>图标选择</span></a>
+                                            </dd>
+                                            <dd><a class="site-demo-active" menu-type="1"
+                                                    menu-url="view/document/area.html" menu-id="2043" menu-title="省市级联"
+                                                    menu-icon="layui-icon layui-icon-face-cry" href="javascript:;"><i
+                                                        class="layui-icon layui-icon-face-cry"></i><span>省市级联</span></a>
+                                            </dd>
+                                            <dd><a class="site-demo-active" menu-type="1"
+                                                    menu-url="view/document/count.html" menu-id="2044" menu-title="数字滚动"
+                                                    menu-icon="layui-icon layui-icon-face-cry" href="javascript:;"><i
+                                                        class="layui-icon layui-icon-face-cry"></i><span>数字滚动</span></a>
+                                            </dd>
+                                            <dd><a class="site-demo-active" menu-type="1"
+                                                    menu-url="view/document/topBar.html" menu-id="2045"
+                                                    menu-title="顶部返回" menu-icon="layui-icon layui-icon-face-cry"
+                                                    href="javascript:;"><i
+                                                        class="layui-icon layui-icon-face-cry"></i><span>顶部返回</span></a>
+                                            </dd>
+                                        </dl>
+                                    </dd>
+                                </dl>
+                            </li>
+                            <li class="layui-nav-item"><a href="javascript:;" menu-type="0" menu-id="result"><i
+                                        class="layui-icon layui-icon-auz"></i><span>结果页面</span><i
+                                        class="layui-icon layui-icon-down layui-nav-more"></i></a>
+                                <dl class="layui-nav-child">
+                                    <dd><a class="site-demo-active" menu-type="1" menu-url="view/result/success.html"
+                                            menu-id="success" menu-title="成功"
+                                            menu-icon="layui-icon layui-icon-face-smile" href="javascript:;"><i
+                                                class="layui-icon layui-icon-face-smile"></i><span>成功</span></a></dd>
+                                    <dd><a class="site-demo-active" menu-type="1" menu-url="view/result/error.html"
+                                            menu-id="failure" menu-title="失败" menu-icon="layui-icon layui-icon-face-cry"
+                                            href="javascript:;"><i
+                                                class="layui-icon layui-icon-face-cry"></i><span>失败</span></a></dd>
+                                </dl>
+                            </li>
+                            <li class="layui-nav-item"><a href="javascript:;" menu-type="0" menu-id="error"><i
+                                        class="layui-icon layui-icon-face-cry"></i><span>错误页面</span><i
+                                        class="layui-icon layui-icon-down layui-nav-more"></i></a>
+                                <dl class="layui-nav-child">
+                                    <dd><a class="site-demo-active" menu-type="1" menu-url="view/error/403.html"
+                                            menu-id="403" menu-title="403" menu-icon="layui-icon layui-icon-face-smile"
+                                            href="javascript:;"><i
+                                                class="layui-icon layui-icon-face-smile"></i><span>403</span></a></dd>
+                                    <dd><a class="site-demo-active" menu-type="1" menu-url="view/error/404.html"
+                                            menu-id="404" menu-title="404" menu-icon="layui-icon layui-icon-face-cry"
+                                            href="javascript:;"><i
+                                                class="layui-icon layui-icon-face-cry"></i><span>404</span></a></dd>
+                                    <dd><a class="site-demo-active" menu-type="1" menu-url="view/error/500.html"
+                                            menu-id="500" menu-title="500" menu-icon="layui-icon layui-icon-face-cry"
+                                            href="javascript:;"><i
+                                                class="layui-icon layui-icon-face-cry"></i><span>500</span></a></dd>
+                                </dl>
+                            </li>
+                            <li class="layui-nav-item"><a href="javascript:;" menu-type="0" menu-id="system"><i
+                                        class="layui-icon layui-icon-set-fill"></i><span>系统管理</span><i
+                                        class="layui-icon layui-icon-down layui-nav-more"></i></a>
+                                <dl class="layui-nav-child">
+                                    <dd><a class="site-demo-active" menu-type="1" menu-url="view/system/user.html"
+                                            menu-id="601" menu-title="用户管理" menu-icon="layui-icon layui-icon-face-smile"
+                                            href="javascript:;"><i
+                                                class="layui-icon layui-icon-face-smile"></i><span>用户管理</span></a></dd>
+                                    <dd><a class="site-demo-active" menu-type="1" menu-url="view/system/role.html"
+                                            menu-id="602" menu-title="角色管理" menu-icon="layui-icon layui-icon-face-cry"
+                                            href="javascript:;"><i
+                                                class="layui-icon layui-icon-face-cry"></i><span>角色管理</span></a></dd>
+                                    <dd><a class="site-demo-active" menu-type="1" menu-url="view/system/power.html"
+                                            menu-id="603" menu-title="权限管理" menu-icon="layui-icon layui-icon-face-cry"
+                                            href="javascript:;"><i
+                                                class="layui-icon layui-icon-face-cry"></i><span>权限管理</span></a></dd>
+                                    <dd><a class="site-demo-active" menu-type="1" menu-url="view/system/deptment.html"
+                                            menu-id="604" menu-title="部门管理" menu-icon="layui-icon layui-icon-face-cry"
+                                            href="javascript:;"><i
+                                                class="layui-icon layui-icon-face-cry"></i><span>部门管理</span></a></dd>
+                                    <dd><a class="site-demo-active" menu-type="1" menu-url="view/system/log.html"
+                                            menu-id="605" menu-title="行为日志" menu-icon="layui-icon layui-icon-face-cry"
+                                            href="javascript:;"><i
+                                                class="layui-icon layui-icon-face-cry"></i><span>行为日志</span></a></dd>
+                                    <dd><a class="site-demo-active" menu-type="1" menu-url="view/system/dict.html"
+                                            menu-id="606" menu-title="数据字典" menu-icon="layui-icon layui-icon-face-cry"
+                                            href="javascript:;"><i
+                                                class="layui-icon layui-icon-face-cry"></i><span>数据字典</span></a></dd>
+                                </dl>
+                            </li>
+                            <li class="layui-nav-item"><a href="javascript:;" menu-type="0" menu-id="common"><i
+                                        class="layui-icon layui-icon-template-1"></i><span>常用页面</span><i
+                                        class="layui-icon layui-icon-down layui-nav-more"></i></a>
+                                <dl class="layui-nav-child">
+                                    <dd><a class="site-demo-active" menu-type="1" menu-url="login.html" menu-id="701"
+                                            menu-title="登录页面" menu-icon="layui-icon layui-icon-face-smile"
+                                            href="javascript:;"><i
+                                                class="layui-icon layui-icon-face-smile"></i><span>登录页面</span></a></dd>
+                                    <dd><a class="site-demo-active" menu-type="1" menu-url="view/system/space.html"
+                                            menu-id="702" menu-title="空白页面" menu-icon="layui-icon layui-icon-face-smile"
+                                            href="javascript:;"><i
+                                                class="layui-icon layui-icon-face-smile"></i><span>空白页面</span></a></dd>
+                                </dl>
+                            </li>
+                            <li class="layui-nav-item"><a href="javascript:;" menu-type="0" menu-id="echarts"><i
+                                        class="layui-icon layui-icon-chart"></i><span>数据图表</span><i
+                                        class="layui-icon layui-icon-down layui-nav-more"></i></a>
+                                <dl class="layui-nav-child">
+                                    <dd><a class="site-demo-active" menu-type="1" menu-url="view/echarts/line.html"
+                                            menu-id="12121" menu-title="折线图"
+                                            menu-icon="layui-icon layui-icon-face-smile" href="javascript:;"><i
+                                                class="layui-icon layui-icon-face-smile"></i><span>折线图</span></a></dd>
+                                    <dd><a class="site-demo-active" menu-type="1" menu-url="view/echarts/column.html"
+                                            menu-id="121212" menu-title="柱状图"
+                                            menu-icon="layui-icon layui-icon-face-smile" href="javascript:;"><i
+                                                class="layui-icon layui-icon-face-smile"></i><span>柱状图</span></a></dd>
+                                </dl>
+                            </li>
+                            <li class="layui-nav-item"><a href="javascript:;" menu-type="0" menu-id="code"><i
+                                        class="layui-icon layui-icon-util"></i><span>开发工具</span><i
+                                        class="layui-icon layui-icon-down layui-nav-more"></i></a>
+                                <dl class="layui-nav-child">
+                                    <dd><a class="site-demo-active" menu-type="1" menu-url="component/code/index.html"
+                                            menu-id="801" menu-title="表单构建" menu-icon="layui-icon layui-icon-util"
+                                            href="javascript:;"><i
+                                                class="layui-icon layui-icon-util"></i><span>表单构建</span></a></dd>
+                                </dl>
+                            </li>
                             <li class="layui-nav-item layui-nav-itemed"><a href="javascript:;" menu-type="0"
                                     menu-id="business"><i class="layui-icon layui-icon-chart"></i><span>业务开发</span><i
                                         class="layui-icon layui-icon-down layui-nav-more"></i></a>
                                 <dl class="layui-nav-child" style="height: auto;">
-                                    <dd class="layui-this"><a class="site-demo-active" menu-type="1"
+                                    <dd class=""><a class="site-demo-active" menu-type="1"
                                             menu-url="view/business/user-business.html" menu-id="11401"
                                             menu-title="用户列表" menu-icon="layui-icon layui-icon-face-smile"
-                                            href="javascript:;"
-                                            onclick="loadPage('view/business/user-business.html')"><i
+                                            href="javascript:;"><i
                                                 class="layui-icon layui-icon-face-smile"></i><span>用户列表</span></a></dd>
-                                    <dd><a class="site-demo-active" menu-type="1"
+                                    <dd class=""><a class="site-demo-active" menu-type="1"
                                             menu-url="view/business/form-business.html" menu-id="11402"
                                             menu-title="用户信息查询" menu-icon="layui-icon layui-icon-face-smile"
-                                            href="javascript:;"
-                                            onclick="loadPage('view/business/form-business.html')"><i
+                                            href="javascript:;"><i
                                                 class="layui-icon layui-icon-face-smile"></i><span>用户信息查询</span></a>
                                     </dd>
-                                    <dd><a class="site-demo-active" menu-type="1"
+                                    <dd class=""><a class="site-demo-active" menu-type="1"
                                             menu-url="view/business/role-business.html" menu-id="11403"
                                             menu-title="角色管理" menu-icon="layui-icon layui-icon-face-cry"
-                                            href="javascript:;"
-                                            onclick="loadPage('view/business/role-business.html')"><i
+                                            href="javascript:;"><i
                                                 class="layui-icon layui-icon-face-cry"></i><span>角色管理</span></a></dd>
-                                    <dd><a class="site-demo-active" menu-type="1"
+                                    <dd class="layui-this"><a class="site-demo-active" menu-type="1"
                                             menu-url="view/business/power-business.html" menu-id="11404"
                                             menu-title="权限管理" menu-icon="layui-icon layui-icon-face-cry"
-                                            href="javascript:;"
-                                            onclick="loadPage('view/business/power-business.html')"><i
+                                            href="javascript:;"><i
                                                 class="layui-icon layui-icon-face-cry"></i><span>权限管理</span></a></dd>
                                 </dl>
-                            </li><span class="layui-nav-bar"></span>
+                            </li><span class="layui-nav-bar" style="top: 600px; height: 0px; opacity: 0;"></span>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
-
+        <!-- 视 图 页 面 -->
         <div class="layui-body">
-            <div class="pear-tab undefined layui-tab-rollTool layui-tab" lay-filter="content" lay-allowclose="true">
-                <ul class="layui-tab-title">
-                    <li lay-id="10" class=""><span class="pear-tab-active"></span><span
-                            class="disable-close title">首页</span><i
-                            class="layui-icon layui-unselect layui-tab-close">ဆ</i></li>
-                    <li lay-id="11404"><span class="pear-tab-active"></span><span class="able-close title">权限管理</span><i
-                            class="layui-icon layui-unselect layui-tab-close">ဆ</i></li>
-                    <li lay-id="failure"><span class="pear-tab-active"></span><span class="able-close title">失败</span><i
-                            class="layui-icon layui-unselect layui-tab-close">ဆ</i></li>
-                    <li lay-id="11402" class=""><span class="pear-tab-active"></span><span
-                            class="able-close title">用户信息查询</span><i
-                            class="layui-icon layui-unselect layui-tab-close">ဆ</i></li>
-                    <li lay-id="11403" class=""><span class="pear-tab-active"></span><span
-                            class="able-close title">角色管理</span><i
-                            class="layui-icon layui-unselect layui-tab-close">ဆ</i></li>
-                    <li lay-id="11401" class="layui-this"><span class="pear-tab-active"></span><span
-                            class="able-close title">用户列表</span><i
-                            class="layui-icon layui-unselect layui-tab-close">ဆ</i></li>
-                </ul>
-                <div class="layui-tab-control">
-                    <li class="layui-tab-prev layui-icon layui-icon-left"></li>
-                    <li class="layui-tab-next layui-icon layui-icon-right"></li>
-                    <li class="layui-tab-tool layui-icon layui-icon-down">
-                        <ul class="layui-nav" lay-filter="">
-                            <li class="layui-nav-item"><a href="javascript:;"><i
-                                        class="layui-icon layui-icon-down layui-nav-more"></i></a>
-                                <dl class="layui-nav-child">
-                                    <dd id="closeThis"><a href="#">关 闭 当 前</a></dd>
-                                    <dd id="closeOther"><a href="#">关 闭 其 他</a></dd>
-                                    <dd id="closeAll"><a href="#">关 闭 全 部</a></dd>
-                                </dl>
-                            </li><span class="layui-nav-bar"></span>
-                        </ul>
-                    </li>
-                </div>
-                <div class="layui-tab-content">
-                    <div class="layui-tab-item"><iframe id="10" data-frameid="10" src="view/console/console1.html"
-                            frameborder="no" border="0" marginwidth="0" marginheight="0"
-                            style="width: 100%;height: 100%;"></iframe></div>
-                    <div class="layui-tab-item"><iframe id="11404" data-frameid="11404"
-                            src="view/business/power-business.html" frameborder="no" border="0" marginwidth="0"
-                            marginheight="0" style="width: 100%;height: 100%;"></iframe></div>
-                    <div class="layui-tab-item"><iframe id="failure" data-frameid="failure" src="view/result/error.html"
-                            frameborder="no" border="0" marginwidth="0" marginheight="0"
-                            style="width: 100%;height: 100%;"></iframe></div>
-                    <div class="layui-tab-item"><iframe id="11402" data-frameid="11402"
-                            src="view/business/form-business.html" frameborder="no" border="0" marginwidth="0"
-                            marginheight="0" style="width: 100%;height: 100%;"></iframe></div>
-                    <div class="layui-tab-item"><iframe id="11403" data-frameid="11403"
-                            src="view/business/role-business.html" frameborder="no" border="0" marginwidth="0"
-                            marginheight="0" style="width: 100%;height: 100%;"></iframe></div>
-                    <div class="layui-tab-item layui-show"><iframe id="11401" data-frameid="11401" scrolling="auto"
-                            frameborder="0" src="view/business/user-business.html"
-                            style="width:100%;height:100%;"></iframe></div>
-                </div>
-                <div id="pear-tab-loading0" class="pear-tab-loading" style="display: none;">
-                    <div class="ball-loader"><span></span><span></span><span></span><span></span></div>
+            <!-- 内 容 页 面 -->
+            <div id="content" style="width: 100%; height: 100%; position: relative;">
+                <div class="pear-tab undefined layui-tab-rollTool layui-tab" lay-filter="content" lay-allowclose="true">
+                    <ul class="layui-tab-title">
+                        <li lay-id="10" class=""><span class="pear-tab-active"></span><span
+                                class="disable-close title">首页</span><i
+                                class="layui-icon layui-unselect layui-tab-close">ဆ</i></li>
+                        <li lay-id="11401" class=""><span class="pear-tab-active"></span><span
+                                class="able-close title">用户列表</span><i
+                                class="layui-icon layui-unselect layui-tab-close">ဆ</i></li>
+                        <li lay-id="11402" class=""><span class="pear-tab-active"></span><span
+                                class="able-close title">用户信息查询</span><i
+                                class="layui-icon layui-unselect layui-tab-close">ဆ</i></li>
+                        <li lay-id="11403" class=""><span class="pear-tab-active"></span><span
+                                class="able-close title">角色管理</span><i
+                                class="layui-icon layui-unselect layui-tab-close">ဆ</i></li>
+                        <li lay-id="11404" class="layui-this"><span class="pear-tab-active"></span><span
+                                class="able-close title">权限管理</span><i
+                                class="layui-icon layui-unselect layui-tab-close">ဆ</i></li>
+                    </ul>
+                    <div class="layui-tab-control">
+                        <li class="layui-tab-prev layui-icon layui-icon-left"></li>
+                        <li class="layui-tab-next layui-icon layui-icon-right"></li>
+                        <li class="layui-tab-tool layui-icon layui-icon-down">
+                            <ul class="layui-nav" lay-filter="">
+                                <li class="layui-nav-item"><a href="javascript:;"><i
+                                            class="layui-icon layui-icon-down layui-nav-more"></i></a>
+                                    <dl class="layui-nav-child">
+                                        <dd id="closeThis"><a href="#">关 闭 当 前</a></dd>
+                                        <dd id="closeOther"><a href="#">关 闭 其 他</a></dd>
+                                        <dd id="closeAll"><a href="#">关 闭 全 部</a></dd>
+                                    </dl>
+                                </li><span class="layui-nav-bar"></span>
+                            </ul>
+                        </li>
+                    </div>
+                    <div class="layui-tab-content">
+                        <div class="layui-tab-item"><iframe id="10" data-frameid="10" src="view/console/console1.html"
+                                frameborder="no" border="0" marginwidth="0" marginheight="0"
+                                style="width: 100%;height: 100%;"></iframe></div>
+                        <div class="layui-tab-item"><iframe id="11401" data-frameid="11401" scrolling="auto"
+                                frameborder="0" src="view/business/user-business.html"
+                                style="width:100%;height:100%;"></iframe></div>
+                        <div class="layui-tab-item"><iframe id="11402" data-frameid="11402" scrolling="auto"
+                                frameborder="0" src="view/business/form-business.html"
+                                style="width:100%;height:100%;"></iframe></div>
+                        <div class="layui-tab-item"><iframe id="11403" data-frameid="11403" scrolling="auto"
+                                frameborder="0" src="view/business/role-business.html"
+                                style="width:100%;height:100%;"></iframe></div>
+                        <div class="layui-tab-item layui-show"><iframe id="11404" data-frameid="11404" scrolling="auto"
+                                frameborder="0" src="view/business/power-business.html"
+                                style="width:100%;height:100%;"></iframe></div>
+                    </div>
+                    <div id="pear-tab-loading0" class="pear-tab-loading" style="display: none;">
+                        <div class="ball-loader"><span></span><span></span><span></span><span></span></div>
+                    </div>
+                    <div id="pear-tab-loading1" class="pear-tab-loading" style="display: none;">
+                        <div class="ball-loader"><span></span><span></span><span></span><span></span></div>
+                    </div>
+                    <div id="pear-tab-loading2" class="pear-tab-loading" style="display: none;">
+                        <div class="ball-loader"><span></span><span></span><span></span><span></span></div>
+                    </div>
+                    <div id="pear-tab-loading3" class="pear-tab-loading" style="display: none;">
+                        <div class="ball-loader"><span></span><span></span><span></span><span></span></div>
+                    </div>
                 </div>
             </div>
         </div>
+        <!-- 页脚 -->
+        <div class="layui-footer layui-text close">
+            <span class="left">
+                <span>
+                    官网：<a href="http://www.pearadmin.com/team.html"
+                        target="_blank">www.pearadmin.com</a>&nbsp;&nbsp;&nbsp;
+                    仓库：<a href="https://gitee.com/pear-admin/Pear-Admin-Layui" target="_blank">gitee.com/pear-admin</a>
+                </span>
+            </span>
+            <span class="center"></span>
+            <span class="right"></span>
+        </div>
         <!-- 遮 盖 层 -->
         <div class="pear-cover"></div>
+        <!-- 加 载 动 画 -->
+        <div class="loader-main" style="display: none;">
+            <!-- 动 画 对 象 -->
+            <div class="loader"></div>
+        </div>
     </div>
-
+    <!-- 移 动 端 便 捷 操 作 -->
+    <div class="pear-collapsed-pe collapse">
+        <a href="#" class="layui-icon layui-icon-shrink-right"></a>
+    </div>
+    <!-- 依 赖 脚 本 -->
+    <script src="component/layui/layui.js"></script>
+    <script src="component/pear/pear.js"></script>
+    <!-- 框 架 初 始 化 -->
     <script>
-        layui.use('element', function () {
-            var element = layui.element;
-        });
+        layui.use(['admin', 'jquery', 'popup', 'drawer'], function () {
+            var $ = layui.jquery;
+            var admin = layui.admin;
+            var popup = layui.popup;
 
-        function loadPage(url) {
-            $("#content").load(url, function (response, status, xhr) {
-                if (status == "error") {
-                    $("#content").html("<p>加载内容时出错: " + xhr.status + " " + xhr.statusText + "</p>");
-                }
-            });
-        }
+            admin.setConfigType("yml");
+            admin.setConfigPath("config/pear.config.yml");
+
+            admin.render();
+
+            // 登出逻辑 
+            admin.logout(function () {
+                popup.success("注销成功", function () {
+                    location.href = "login.html";
+                })
+                // 注销逻辑 返回 true / false
+                return true;
+            })
+
+            // 自定义消息点击回调
+            admin.message(function (id, title, context, form) { });
+        })
     </script>
+
+
 </body>
 
 </html>
