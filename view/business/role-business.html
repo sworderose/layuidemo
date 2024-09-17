@@ -73,7 +73,7 @@
 	</div>
 	<div class="layui-card">
 		<div class="layui-card-body">
-			<table id="role-business-table" lay-filter="roleTable"></table>
+			<table id="role-business-table" lay-filter="role-business-table"></table>
 		</div>
 	</div>
 
@@ -134,7 +134,7 @@
 				}, 'filter', 'print', 'exports']
 			});
 
-			table.on('tool(role-table)', function (obj) {
+			table.on('tool(role-business-table)', function (obj) {
 				if (obj.event === 'remove') {
 					window.remove(obj);
 				} else if (obj.event === 'edit') {
@@ -146,7 +146,7 @@
 				}
 			});
 
-			table.on('toolbar(role-table)', function (obj) {
+			table.on('toolbar(role-business-table)', function (obj) {
 				if (obj.event === 'add') {
 					window.add();
 				} else if (obj.event === 'refresh') {
@@ -159,7 +159,7 @@
 			});
 
 			form.on('submit(role-query)', function (data) {
-				table.reload('role-table', { where: data.field })
+				table.reload('role-business-table', { where: data.field })
 				return false;
 			});
 
@@ -296,7 +296,7 @@
 							layer.close(loading);
 							if (result.success) {
 								layer.msg(result.msg, { icon: 1, time: 1000 }, function () {
-									table.reload('role-table');
+									table.reload('role-business-table');
 								});
 							} else {
 								layer.msg(result.msg, { icon: 2, time: 1000 });
@@ -307,7 +307,7 @@
 			}
 
 			window.refresh = function () {
-				table.reload('role-table');
+				table.reload('role-business-table');
 			}
 
 			// 模态框
@@ -481,7 +481,7 @@
 					</div>
 				</div>
 			</div>
-
+			
 		</div>
 
 		<!-- 保存和提交按钮 -->
