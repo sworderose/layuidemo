@@ -113,12 +113,27 @@
 		</button>
 		<button class="pear-btn pear-btn-primary pear-btn-md" lay-event="info">
 			<i class="layui-icon layui-icon-note"></i>
-			详细规则
+			详细规则（弹窗）
+		</button>
+		<button class="pear-btn pear-btn-primary pear-btn-md" lay-event="info2">
+			<i class="layui-icon layui-icon-note"></i>
+			详细规则（通知）
+		</button>
+		<button class="pear-btn pear-btn-primary pear-btn-md" lay-event="info3">
+			<i class="layui-icon layui-icon-note"></i>
+			详细规则（折叠）
 		</button>
 	
 		<!-- 添加一行红色纯文本 -->
 		<p style="color: red; font-weight: bold; margin-top: 10px;">
 			*重要规则：请勿删除重要数据！
+		</p>
+		<p style="color: gray; font-weight: bold; margin-top: 10px;display: none;" id="grayVersion">
+			*详细规则：123456<br>
+			*详细规则：123456<br>
+			*详细规则：123456<br>
+			*详细规则：123456<br>
+			*详细规则：123456
 		</p>
 	</script>
 
@@ -154,12 +169,12 @@
 	<script src="../../component/layui/layui.js"></script>
 	<script src="../../component/pear/pear.js"></script>
 	<script>
-		layui.use(['table', 'form', 'jquery', 'common'], function () {
+		layui.use(['table', 'form', 'jquery', 'common','toast'], function () {
 			let table = layui.table;
 			let form = layui.form;
 			let $ = layui.jquery;
 			let common = layui.common;
-
+			var toast = layui.toast;
 			let MODULE_PATH = "operate/";
 
 			let cols = [
@@ -249,6 +264,10 @@
 					window.batchRemove(obj);
 				} else if (obj.event === 'info') {
 					window.info();
+				}else if (obj.event === 'info2') {
+					window.info2();
+				}else if (obj.event === 'info3') {
+					window.info3();
 				} else if (obj.event === 'openWindow') {
 					window.openWindow();
 				}
@@ -313,6 +332,24 @@
 					cancel: function () {
 					}
 				});
+			}
+
+			window.info2 = function () {
+				toast.question({
+					title: '详细规则',
+					message: 'You forgot important data.<br>Please ensure that all required fields are filled out correctly.<br>This will help prevent any errors and improve your experience.',
+					position: 'topCenter',  // 设置显示位置
+					
+				});
+			}
+
+			window.info3 = function () {
+				const grayVersion = document.getElementById('grayVersion');
+				if (grayVersion.style.display === 'none' || grayVersion.style.display === '') {
+					grayVersion.style.display = 'block'; // 显示元素
+				} else {
+					grayVersion.style.display = 'none'; // 隐藏元素
+				}
 			}
 			
 			window.edit = function (obj) {
