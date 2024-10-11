@@ -9,14 +9,14 @@
 	<style>
 		/* 统一样式 */
 		#role-business-table+.layui-table-view thead .layui-table-cell {
-			display: table-cell;
+			display: table;/* 不使用table-cell会共用屏幕宽度,改成table*/
 			vertical-align: middle;
 			background-color: #fff;
-			/* MediumSeaGreen */
 			color: #333;
 			font-weight: bold;
 			white-space: normal;
 			line-height: 15px;
+			/* min-width: 100px; 不需要设置，表头的最小宽度会跟着表格内容*/
 		}
 
 		/* 针对第二个表头的定制 */
@@ -112,8 +112,25 @@
 			let cols = [
 				[
 					{ type: 'checkbox' },
-					{ title: '角色名角色名角色名角色名角色名角色名', field: 'roleName', align: 'center', width: 100 },
-					{ title: 'Key值角色名角色名角色名角色名角色名', field: 'roleCode', align: 'center' },
+					{ title: '角色名角色名角色名角色名角色名角色名', field: 'roleName', align: 'center', width: 100,minWidth: 100 },//表头最小宽度按照内容的来
+					{ title: 'Key值角色名角色名角色名角色名角色名', field: 'roleCode', align: 'center',minWidth: 100 },
+					{ title: 'Key值角色名角色名角色名角色名角色名', field: 'roleCode', align: 'center' ,minWidth: 100},
+					{ title: 'Key值角色名角色名角色名角色名角色名', field: 'roleCode', align: 'center' ,minWidth: 100},
+					{ title: 'Key值角色名角色名角色名角色名角色名', field: 'roleCode', align: 'center' ,minWidth: 100},
+					{ title: 'Key值角色名角色名角色名角色名角色名', field: 'roleCode', align: 'center' ,minWidth: 100},
+					{ title: 'Key值角色名角色名角色名角色名角色名', field: 'roleCode', align: 'center' ,minWidth: 100},
+					{ title: 'Key值角色名角色名角色名角色名角色名', field: 'roleCode', align: 'center' ,minWidth: 100},
+					{ title: 'Key值角色名角色名角色名角色名角色名', field: 'roleCode', align: 'center' ,minWidth: 100},
+					{ title: 'Key值角色名角色名角色名角色名角色名', field: 'roleCode', align: 'center' ,minWidth: 100},
+					{ title: 'Key值角色名角色名角色名角色名角色名', field: 'roleCode', align: 'center' ,minWidth: 100},
+					{ title: 'Key值角色名角色名角色名角色名角色名', field: 'roleCode', align: 'center',minWidth: 100 },
+					{ title: 'Key值角色名角色名角色名角色名角色名', field: 'roleCode', align: 'center' ,minWidth: 100},
+					{ title: 'Key值角色名角色名角色名角色名角色名', field: 'roleCode', align: 'center' ,minWidth: 100},
+					{ title: 'Key值角色名角色名角色名角色名角色名', field: 'roleCode', align: 'center',minWidth: 100 },
+					{ title: 'Key值角色名角色名角色名角色名角色名', field: 'roleCode', align: 'center' ,minWidth: 100},
+					{ title: 'Key值角色名角色名角色名角色名角色名', field: 'roleCode', align: 'center' ,minWidth: 100},
+					{ title: 'Key值角色名角色名角色名角色名角色名', field: 'roleCode', align: 'center' ,minWidth: 100},
+					{ title: 'Key值角色名角色名角色名角色名角色名', field: 'roleCode', align: 'center' ,minWidth: 100},
 					{ title: '描述', field: 'details', align: 'center' },
 					{ title: '是否可用', field: 'enable', align: 'center', templet: '#role-enable' },
 					{ title: '操作', toolbar: '#role-bar', align: 'center', width: 195 }
