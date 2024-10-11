@@ -111,29 +111,14 @@
 			<i class="layui-icon layui-icon-delete"></i>
 			删除
 		</button>
-		<button class="pear-btn pear-btn-primary pear-btn-md" lay-event="info">
+		<button class="pear-btn pear-btn-primary pear-btn-md" id="showTipTop">
 			<i class="layui-icon layui-icon-note"></i>
-			详细规则（弹窗）
-		</button>
-		<button class="pear-btn pear-btn-primary pear-btn-md" lay-event="info2">
-			<i class="layui-icon layui-icon-note"></i>
-			详细规则（通知）
-		</button>
-		<button class="pear-btn pear-btn-primary pear-btn-md" lay-event="info3">
-			<i class="layui-icon layui-icon-note"></i>
-			详细规则（折叠）
+			详细规则
 		</button>
 	
 		<!-- 添加一行红色纯文本 -->
 		<p style="color: red; font-weight: bold; margin-top: 10px;">
 			*重要规则：请勿删除重要数据！
-		</p>
-		<p style="color: gray; font-weight: bold; margin-top: 10px;display: none;" id="grayVersion">
-			*详细规则：123456<br>
-			*详细规则：123456<br>
-			*详细规则：123456<br>
-			*详细规则：123456<br>
-			*详细规则：123456
 		</p>
 	</script>
 
@@ -169,14 +154,13 @@
 	<script src="../../component/layui/layui.js"></script>
 	<script src="../../component/pear/pear.js"></script>
 	<script>
-		layui.use(['table', 'form', 'jquery', 'common','toast'], function () {
+		layui.use(['table', 'form', 'jquery', 'common'], function () {
 			let table = layui.table;
 			let form = layui.form;
 			let $ = layui.jquery;
 			let common = layui.common;
-			var toast = layui.toast;
 			let MODULE_PATH = "operate/";
-
+			
 			let cols = [
 				[{
 					type: 'checkbox'
@@ -262,13 +246,7 @@
 					window.refresh();
 				} else if (obj.event === 'batchRemove') {
 					window.batchRemove(obj);
-				} else if (obj.event === 'info') {
-					window.info();
-				}else if (obj.event === 'info2') {
-					window.info2();
-				}else if (obj.event === 'info3') {
-					window.info3();
-				} else if (obj.event === 'openWindow') {
+				}  else if (obj.event === 'openWindow') {
 					window.openWindow();
 				}
 			});
@@ -317,40 +295,9 @@
 				});
 			}
 
-			window.info = function () {
-				form.render()
-				layer.open({
-					type: 1,
-					skin: 'layui-layer-demo', //样式类名
-					title: "详细信息",
-					shadeClose: true, //开启遮罩关闭
-					shade: 0.6, //遮罩透明度
-					area: ['500px','500px'],
-					maxmin: true, //允许全屏最小化
-					anim: 1, //0-6的动画形式，-1不开启
-					content: $('#infoPage'), //捕获的元素，注意：最好该指定的元素要存放在body最外层，否则可能被其它的相对元素所影响
-					cancel: function () {
-					}
-				});
-			}
-
-			window.info2 = function () {
-				toast.question({
-					title: '详细规则',
-					message: 'You forgot important data.<br>Please ensure that all required fields are filled out correctly.<br>This will help prevent any errors and improve your experience.',
-					position: 'topCenter',  // 设置显示位置
-					
-				});
-			}
-
-			window.info3 = function () {
-				const grayVersion = document.getElementById('grayVersion');
-				if (grayVersion.style.display === 'none' || grayVersion.style.display === '') {
-					grayVersion.style.display = 'block'; // 显示元素
-				} else {
-					grayVersion.style.display = 'none'; // 隐藏元素
-				}
-			}
+			document.getElementById('showTipTop').addEventListener('click', function() {
+				layer.tips('详细规则<br>这是第二行111111111111111111111<br>这是第三行2222222222222222222222', this, { tips: [1, '#16b777'] });
+			  });
 			
 			window.edit = function (obj) {
 				layer.open({
@@ -572,43 +519,4 @@
 	</div>
 </div>
 
-<!-- 模态框ui纯文本 -->
-<div class="layui-card operation2" id="infoPage" hidden> 
-	<div class="layui-card-body">
-		<div class="layui-text" style="padding: 16px;">
-			<h1>标题1</h1>
-			<h2>标题2</h2>
-			<h3>标题3</h3>
-			<h4>标题4</h4>
-			<h5>标题5</h5>
-			<h6>标题6</h6>
-			
-			<hr>
-			<ul>
-			  <li>列表1</li>
-			  <li>
-				列表2
-				<ul>
-				  <li>列表2-1</li>
-				  <li>列表2-2</li>
-				  <li>列表2-3</li>
-				</ul>
-			  </li>
-			  <li>列表3</li>
-			</ul>
-			<hr>
-			<ol>
-			  <li>列表1</li>
-			  <li>列表2</li>
-			  <li>列表3</li>
-			</ol>
-			<hr>
-			<h2>标题2</h2>
-			<p>段落1段落1段落1段落1段落1段落1段落1段落1段落1段落1段落1段落1段落1段落1段落1段落1段落1段落1段落1段落1段落1段落1段落1段落1段落1段落1段落1段落1段落1段落1段落1段落1段落1段落1</p>
-			<p>段落2段落2段落2段落2段落2段落2段落2段落2段落2段落2段落2段落2段落2段落2段落2段落2段落2段落2段落2段落2段落2段落2段落2段落2段落2段落2段落2段落2段落2段落2段落2段落2段落2段落2</p>
-			<blockquote>引用</blockquote>
-			<p>这是一个包含<a href="javascript:;">超文本</a>和<strong>加粗文本</strong>的段落</p>
-		  </div>	
-		</div>
-</div>
 </html>
