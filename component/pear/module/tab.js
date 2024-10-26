@@ -30,18 +30,18 @@ layui.define(['jquery', 'element'], function(exports) {
 		}
 
 		if (option.session) {
-			if (sessionStorage.getItem(option.elem + "-pear-tab-data") != null) {
-				tabData = JSON.parse(sessionStorage.getItem(option.elem + "-pear-tab-data"));
-				option.data = JSON.parse(sessionStorage.getItem(option.elem + "-pear-tab-data"));
-				tabDataCurrent = sessionStorage.getItem(option.elem + "-pear-tab-data-current");
-				tabData.forEach(function(item, index) {
-					if (item.id == tabDataCurrent) {
-						option.index = index;
-					}
-				})
-			} else {
-				tabData = opt.data;
-			}
+			// if (sessionStorage.getItem(option.elem + "-pear-tab-data") != null) {
+			// 	tabData = JSON.parse(sessionStorage.getItem(option.elem + "-pear-tab-data"));
+			// 	option.data = JSON.parse(sessionStorage.getItem(option.elem + "-pear-tab-data"));
+			// 	tabDataCurrent = sessionStorage.getItem(option.elem + "-pear-tab-data-current");
+			// 	tabData.forEach(function(item, index) {
+			// 		if (item.id == tabDataCurrent) {
+			// 			option.index = index;
+			// 		}
+			// 	})
+			// } else {这里删掉就不会读前一次刷新的多余的tab了
+							tabData = opt.data;
+			
 		}
 
 		var lastIndex;
@@ -625,6 +625,7 @@ layui.define(['jquery', 'element'], function(exports) {
 			})
 		})
 
+	    //关闭全部
 		$("body .layui-tab[lay-filter='" + option.elem + "']").on("click", "#closeAll", function() {
 			var currentId = $(".layui-tab[lay-filter='" + option.elem + "'] .layui-tab-title .layui-this").attr("lay-id");
 			var tabtitle = $(".layui-tab[lay-filter='" + option.elem + "'] .layui-tab-title li");

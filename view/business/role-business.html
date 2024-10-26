@@ -15,8 +15,9 @@
 			color: #333;
 			font-weight: bold;
 			white-space: normal;
-			line-height: 3;
-			vertical-align: middle;
+			line-height: 2;
+			margin-top: 7px;
+			/* margin-bottom: 2px; */
 			/* min-width: 100px; 不需要设置，表头的最小宽度会跟着表格内容*/
 		}
 
@@ -157,25 +158,8 @@
 			let cols = [
 				[
 					{ type: 'checkbox' },
-					{ title: '角色名角色名角色名角色名角色名角色名', field: 'roleName', align: 'center', width: 100,minWidth: 100 },//表头最小宽度按照内容的来
-					{ title: 'Key值角色名角色名角色名角色名角色名', field: 'roleCode', align: 'center',minWidth: 100 },
-					{ title: 'Key值角色名角色名角色名角色名角色名', field: 'roleCode', align: 'center' ,minWidth: 100},
-					{ title: 'Key值角色名角色名角色名角色名角色名', field: 'roleCode', align: 'center' ,minWidth: 100},
-					{ title: 'Key值角色名角色名角色名角色名角色名', field: 'roleCode', align: 'center' ,minWidth: 100},
-					{ title: 'Key值角色名角色名角色名角色名角色名', field: 'roleCode', align: 'center' ,minWidth: 100},
-					{ title: 'Key值角色名角色名角色名角色名角色名', field: 'roleCode', align: 'center' ,minWidth: 100},
-					{ title: 'Key值角色名角色名角色名角色名角色名', field: 'roleCode', align: 'center' ,minWidth: 100},
-					{ title: 'Key值角色名角色名角色名角色名角色名', field: 'roleCode', align: 'center' ,minWidth: 100},
-					{ title: 'Key值角色名角色名角色名角色名角色名', field: 'roleCode', align: 'center' ,minWidth: 100},
-					{ title: 'Key值角色名角色名角色名角色名角色名', field: 'roleCode', align: 'center' ,minWidth: 100},
-					{ title: 'Key值角色名角色名角色名角色名角色名', field: 'roleCode', align: 'center',minWidth: 100 },
-					{ title: 'Key值角色名角色名角色名角色名角色名', field: 'roleCode', align: 'center' ,minWidth: 100},
-					{ title: 'Key值角色名角色名角色名角色名角色名', field: 'roleCode', align: 'center' ,minWidth: 100},
-					{ title: 'Key值角色名角色名角色名角色名角色名', field: 'roleCode', align: 'center',minWidth: 100 },
-					{ title: 'Key值角色名角色名角色名角色名角色名', field: 'roleCode', align: 'center' ,minWidth: 100},
-					{ title: 'Key值角色名角色名角色名角色名角色名', field: 'roleCode', align: 'center' ,minWidth: 100},
-					{ title: 'Key值角色名角色名角色名角色名角色名', field: 'roleCode', align: 'center' ,minWidth: 100},
-					{ title: 'Key值角色名角色名角色名角色名角色名', field: 'roleCode', align: 'center' ,minWidth: 100},
+					{ title: '角色名角色名角', field: 'roleName', align: 'center', width: 100,minWidth: 100 },//表头最小宽度按照内容的来
+					{ title: 'Key值角色名角色Key值角色名角色Key值角色名角色', field: 'roleCode', align: 'center',minWidth: 100 },
 					{ title: '描述', field: 'details', align: 'center' ,minWidth: 100},
 					{ title: '是否可用', field: 'enable', align: 'center', templet: '#role-enable' ,width:300},
 					{ title: '操作', toolbar: '#role-bar', align: 'center', width: 150 }
